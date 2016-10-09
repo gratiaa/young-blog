@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>OOCSS(객체지향적 CSS) 소개 | Young Blog</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/young-blog/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Young Blog">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/young-blog/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Young Blog</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-09-20T15:00:37.000Z" itemprop="datePublished">
+          2016-09-21
+      </time>
+    
+    
+    | 
+    <a href='/young-blog/tags/CSS/'>CSS</a>
+    
+    
+</span>
+    <h1 class="post-title">OOCSS(객체지향적 CSS) 소개</h1>
+    <section class="post-content">
+      <ul>
+<li>원문: <a href="https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/" target="_blank" rel="external">An Introduction to Object Oriented CSS(OOCSS)</a> by <em>Louis Lazaris</em>, Dec 12th 2011</li>
+</ul>
+<hr>
+<p>&ldquo;콘텐츠가 왕이다&rdquo;라는 말을 들어본 적이 있는가? 웹 개발자라던가, 콘텐츠 창작과 관련된 일을 하고 있다면 들어 보았을 가능성이 크다. 상당히 과도하게 사용되는 면이 있지만, 사이트 방문자를 끌어들이기 위해 중요한 것을 알려주는 사실적인 구절이다.</p>
+<p>그러나 웹 개발자의 관점으로 보면, <a href="http://www.stevesouders.com/blog/2009/10/06/business-impact-of-high-performance/" target="_blank" rel="external">속도가 왕</a>이라고 주장하는 사람들이 있을 것이다. 나 또한 이 주장을 점점 옹호하게 되었다. 최근 몇 년 동안 기술적으로 숙련된 많은 프론트엔드 엔지니어들이 어떤 식으로 <a href="https://www.amazon.com/High-Performance-Web-Sites-Essential/dp/0596529309?ie=UTF8&amp;*Version*=1&amp;*entries*=0" target="_blank" rel="external">모범적인</a> <a href="https://www.amazon.com/Even-Faster-Web-Sites-Performance/dp/0596522304?ie=UTF8&amp;*Version*=1&amp;*entries*=0" target="_blank" rel="external">성능 개선 방법</a>을 사용하여 사용자 경험 향상을 끌어 낼 것인지에 대해 <a href="http://www.stevesouders.com/blog/" target="_blank" rel="external">자신만의 의견을 내놓았다.</a></p>
+<p>불행하게도 많은 개발자가 자바스크립트와 <a href="https://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">그 외 다른 분야</a>의 성능에 대해 (괜찮은 근거를 곁들이며) 큰 관심을 보인 것에 비해, CSS는 논의 주제에서 제외된 편이다.</p>
+<p>이번 포스트를 통해 OOCSS의 개념과 이것이 어떻게 웹 페이지의 성능을 향상하고 유지보수를 원활하게 하는지에 대해 소개함으로써 우리가 놓친 분야를 다루도록 하겠다.</p>
+<h2 id="OOCSS-원리"><a href="#OOCSS-원리" class="headerlink" title="OOCSS 원리"></a>OOCSS 원리</h2><p>객체를 바탕으로 하는 다른 코딩 방법론과 마찬가지로, OOCSS의 목적은 코드의 재사용성을 높이고 최종적으로는 더 빠르고 효율적인 스타일 시트를 만들어서 유지보수를 원활하게 하는 데 있다.</p>
+<p><img src="https://www.smashingmagazine.com/wp-content/uploads/2011/12/oocss-splash1.jpg" alt="CSS가 구린 게 아닙니다. 단지 쓰는 사람이 잘못 사용하고 있을 뿐. - 더글러스 크록포드"></p>
+<blockquote>
+<p>&ldquo;CSS<del>자바스크립트</del>가 구린 게 아닙니다. 단지 쓰는 사람이 잘못 사용하고 있을 뿐이죠.&rdquo; - <em>더글러스 크록포드</em></p>
+</blockquote>
+<h2 id="스타일에서-구조를-분리하기"><a href="#스타일에서-구조를-분리하기" class="headerlink" title="스타일에서 구조를 분리하기"></a>스타일에서 구조를 분리하기</h2><p>스타일을 입힌 웹 페이지에 존재하는 요소들 대부분이 제각기 자신만의 시각적인 특성인 &ldquo;스킨&rdquo;(skins)을 가지고 있는데, 이 스킨은 페이지 안의 여러 곳에서 반복되어 나타난다. 예를 들어보면 웹 사이트의 브랜드 구축을 위해 사용되는 색상, 미묘한 그라디언트, 혹은 시각적인 테두리 요소 등이 있다. 한편으로는 &ldquo;구조&rdquo;(structure)라고 하는, 대부분 눈에 띄지 않는 특징들 역시 페이지 안에서 반복된다.</p>
+<p>이렇게 상반되는 특징들이 클래스를 기반으로 하는 모듈로 추상화되면, <strong>재사용이 가능해지고</strong> 어떠한 요소에도 적용할 수 있으며, 모두 같은 결과물을 만들어낼 것이다. 이제 방법론을 적용하기 전, 후의 코드를 살펴봄으로써 내가 말하고자 하는 바가 무엇인지 이해할 수 있을 것이다.</p>
+<p>OOCSS 원리를 적용하기 전의 CSS 코드는 다음과 같다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#button</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#ccc</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(#ccc, #222);</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .5) <span class="number">2px</span> <span class="number">2px</span> <span class="number">5px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#box</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">overflow</span>: hidden;</div><div class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#ccc</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(#ccc, #222);</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .5) <span class="number">2px</span> <span class="number">2px</span> <span class="number">5px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#widget</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">overflow</span>: auto;</div><div class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#ccc</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(#ccc, #222);</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .5) <span class="number">2px</span> <span class="number">2px</span> <span class="number">5px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>위의 세 가지 요소들은 개별적으로 고유한 스타일을 가지고 있으며, 스타일 정의를 위해 재사용이 불가능한 ID 선택자를 사용했다. 그러면서도 이들 사이에서는 몇 가지 공통적인 스타일 선언문이 존재한다. 아마 브랜딩 목적이거나 디자인 통일을 위한 것일 가능성이 크다. </p>
+<p>잠시 생각을 해 본 결과, 공통 스타일을 추상화하여 코드를 다음과 같이 바꿀 수 있었다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.button</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.widget</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">overflow</span>: auto;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.skin</span> &#123;</div><div class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#ccc</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(#ccc, #222);</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .5) <span class="number">2px</span> <span class="number">2px</span> <span class="number">5px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>이제 모든 요소가 클래스를 사용하고, 공통으로 적용되는 스타일은 재사용 가능한 “skin”이라 하는 클래스에 들어감으로써 불필요하게 중복되는 코드가 없어진다. 이제 해야 할 일은 그저 “skin” 클래스를 모든 요소에 적용하는 일이다. 위의 코드 예시에서 전자와 후자는 똑같은 화면을 보여주지만 단지 달라진 것은 <strong>코드량이 줄어들었고 재사용이 가능해졌다는 점</strong>이다.</p>
+<h2 id="컨테이너와-콘텐츠를-분리하기"><a href="#컨테이너와-콘텐츠를-분리하기" class="headerlink" title="컨테이너와 콘텐츠를 분리하기"></a>컨테이너와 콘텐츠를 분리하기</h2><p>OOCSS 깃허브 위키 페이지에 서술된 두 번째 원리는 바로 컨테이너와 그 안에 있는 콘텐츠를 분리하는 것이다. 이 원리가 중요한 이유를 설명하기 위해 예시 CSS를 들어보겠다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#sidebar</span> <span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: Arial, Helvetica, sans-serif;</div><div class="line">  <span class="attribute">font-size</span>: .<span class="number">8em</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</div><div class="line">  <span class="attribute">text-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .3) <span class="number">3px</span> <span class="number">3px</span> <span class="number">6px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>위의 코드는 <code>#sidebar</code> 요소의 자식 요소 중 <code>h3</code>에 무조건 적용될 것이다. 그렇지만 이 스타일을 꼬리말(footer) 영역에 속하는 <code>h3</code>에도 적용하고 싶은데, 폰트 크기와 텍스트 그림자만 수정해서 적용하고 싶은 상황이라면 어떻게 해야 할까? </p>
+<p>아마 다음과 같은 코드를 작성해야 할 것이다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#sidebar</span> <span class="selector-tag">h3</span>, <span class="selector-id">#footer</span> <span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: Arial, Helvetica, sans-serif;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</div><div class="line">  <span class="attribute">text-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .3) <span class="number">3px</span> <span class="number">3px</span> <span class="number">6px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-id">#footer</span> <span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">1.5em</span>;</div><div class="line">  <span class="attribute">text-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .3) <span class="number">2px</span> <span class="number">2px</span> <span class="number">4px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>더 헛다리 짚으면 코드가 다음과 같아질 수도 있다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#sidebar</span> <span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: Arial, Helvetica, sans-serif;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</div><div class="line">  <span class="attribute">text-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .3) <span class="number">3px</span> <span class="number">3px</span> <span class="number">6px</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 중간 코드 생략... */</span></div><div class="line"><span class="selector-id">#footer</span> <span class="selector-tag">h3</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: Arial, Helvetica, sans-serif;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">1.5em</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#777</span>;</div><div class="line">  <span class="attribute">text-shadow</span>: <span class="built_in">rgba</span>(0, 0, 0, .3) <span class="number">2px</span> <span class="number">2px</span> <span class="number">4px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>이제 <strong>쓸데없이 스타일을 중복 적용하고 있는</strong> 상황이 되어버렸고, 이를 눈치채지 못하고 있을 수도 있다. (아니면 아예 신경 쓰고 있지 않거나) OOCSS를 적용한다면, 서로 다른 요소 간에 공통으로 적용해야 할 스타일이 어떤 것인지, 또 이러한 특징을 모듈 혹은 객체로 분리하여 어디에서나 적용 가능하도록 만들어 볼 기회를 얻을 수 있다.</p>
+<p>위의 예시처럼 자손 선택자를 사용하여 선언된 스타일은 <em>재사용이 불가능하다.</em> 특정한 컨테이너에 종속되기 때문이다. (위의 경우에는 사이드바 혹은 푸터 영역에 종속된다)</p>
+<p>OOCSS의 클래스 기반 모듈 설계를 적용하면 어떠한 컨테이너 요소에도 종속하지 않는 스타일임을 확신할 수 있다. 다시 말해 HTML 구조가 어떻게 되어있는지 따질 필요 없이, 클래스를 문서 안의 <strong>어디에서든 재사용할 수 있다는 뜻이다.</strong></p>
+<h2 id="실제-적용-예시"><a href="#실제-적용-예시" class="headerlink" title="실제 적용 예시"></a>실제 적용 예시</h2><p>OOCSS 적용 방법에 관해 좀 더 설명해보기 위해, 최근에 나의 <a href="https://www.impressivewebs.com/rolled-new-design/" target="_blank" rel="external">사이트 디자인을 수정하면서</a> 사용한 방법과 비슷한 것을 예시로 들어보겠다. 사이트의 헤더 안쪽 요소 코드를 작성하고 나니 여기에 적용한 기본 구조 스타일을 페이지의 다른 부분에서도 다시 쓸 수 있을 거라고 생각했다.</p>
+<p>다음 코드는 헤더 영역을 꾸미는 데 사용하려고 쓴 코드다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.header-inside</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">980px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">260px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>위의 코드 중 몇몇 선언문은 <code>.header-inside</code> 요소에만 유일하게 적용했다. 하지만 그 나머지는 재사용 가능한 모듈로 꾸릴 수 있다. 따라서 <strong>구조적인 스타일을 추상화하여</strong> 고유한 클래스로 만들었다. 그 결과는 다음과 같다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.globalwidth</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">980px</span>;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">padding-right</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.header-inside</span> &#123;</div><div class="line">  <span class="attribute">padding-top</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">padding-bottom</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">260px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>.globalwidth</code> 클래스에 속하는 스타일은 다음과 같다.</p>
+<ul>
+<li>고정 <code>width</code></li>
+<li>마진을 사용하여 중앙정렬: <code>auto</code></li>
+<li>자식 요소의 위치 컨텍스트 생성을 위한 <code>relative</code> 포지셔닝</li>
+<li>왼쪽, 오른쪽 패딩 <code>20px</code></li>
+<li>클리어픽스 사용을 위해 <code>overflow: hidden</code></li>
+</ul>
+<p>이제 이 스타일을 또 다른 요소에 추가하고자 한다면 코드를 한 줄이라도 더 쓸 필요 없이 그저 이 클래스를 추가하기만 하면 된다.</p>
+<p>위에서 예시로 든 구조적인 스타일은 내가 만든 웹사이트에서 중요한 콘텐츠 요소와 푸터 안쪽에 위치하는 요소에 적용했다. 디자인에 따라서 이 스타일을 헤더와 콘텐츠 사이에 나타나는 수평 내비게이션 요소나 고정 너비를 가지면서 중앙 정렬을 해야 하는 다른 요소에 적용할 수도 있다.</p>
+<p>“globalwidth” 스타일을 적용하고자 하는 요소에 입힌 후의 마크업은 다음과 같을 것이다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"header-inside globalwidth"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main globalwidth"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer-inside globalwidth"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>일부 사람들은 이를 보고 HTML이 빽빽해졌다거나 구조에서 스타일을 분리해야 한다는 마크업 작성 원칙에 어긋난다고 생각할 것 같다.</p>
+<p>그러나 OOCSS가 마크업에 끼칠 영향에 대한 논의는 잠시 옆으로 미뤄두고, 이러한 추상화 과정을 통해 위의 세 가지 요소에 적용된 <strong>공통 스타일을 유지 보수하는 것이</strong> 얼마나 쉬워졌는지에 대해 이견을 말할 사람은 없을 것이다.</p>
+<h2 id="미디어-객체"><a href="#미디어-객체" class="headerlink" title="미디어 객체"></a>미디어 객체</h2><p><a href="http://www.stubbornella.org/content/" target="_blank" rel="external">니콜 설리번(Nicole Sullivan)</a>은 OOCSS 방법론의 선구자 중 한 명이다. 니콜은 <a href="https://github.com/stubbornella/oocss/wiki/Content" target="_blank" rel="external">미디어 객체(media object)</a>라고 하는 재사용 가능한 모듈을 고안해냈는데 그녀의 설명에 따르면 <a href="http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/" target="_blank" rel="external">이것을 사용함으로써 수백 줄의 코드를 줄일 수 있다고 한다.</a></p>
+<p><img src="https://www.smashingmagazine.com/wp-content/uploads/2011/12/media-object.jpg" alt="설리반의 미디어 객체 소개 그림"></p>
+<p>미디어 객체는 크기에 상관없이 어떠한 콘텐츠도 적절하게 담을 수 있는 미디어 요소를 담아내기 때문에 OOCSS의 막강한 위력을 보여주는 훌륭한 예시이다. 객체 내부의 콘텐츠에 적용되는 스타일은 (더불어 미디어 요소 자체의 크기도) 변경될 수도 있지만, 미디어 객체에 자체적으로 적용된 공통 스타일은 불필요한 반복을 줄이는 데 도움이 된다.</p>
+<h2 id="OOCSS가-주는-혜택들"><a href="#OOCSS가-주는-혜택들" class="headerlink" title="OOCSS가 주는 혜택들"></a>OOCSS가 주는 혜택들</h2><p>이미 OOCSS의 몇 가지 장점을 언급했지만, 좀 더 알아보도록 하자.</p>
+<h3 id="웹사이트-속도가-더-빨라진다"><a href="#웹사이트-속도가-더-빨라진다" class="headerlink" title="웹사이트 속도가 더 빨라진다."></a>웹사이트 속도가 더 빨라진다.</h3><p>OOCSS를 사용함으로써 얻을 수 있는 혜택은 꽤 분명하다. CSS 내에서 반복되는 스타일 선언문이 적을수록 <strong>파일 크기가 작아지며</strong> 이로 인해 리소스를 더 빨리 내려받을 수 있다.</p>
+<p>마크업이 더 빽빽해지기 때문에 HTML 파일의 크기가 늘어나는 것은 사실이다. 하지만 대부분의 경우 마크업 때문에 생기는 성능 손실보다 스타일 시트 쪽에서 얻는 성능 향상이 월등하다.</p>
+<p>알아두어야 할 다른 개념은 OOCSS 위키에서 소위 <strong>성능 사은품</strong>이라고 칭하는 것이다. 이 말인즉슨 우리가 매번 CSS에서 무엇인가를 재사용하면, 이것이 본질적으로 CSS 코드를 한 줄도 작성하지 않으면서 새로운 스타일 요소를 만들어내는 것과 같다는 뜻이다. 프로젝트의 크기가 크고 파일 전송량이 커지면, 이러한 “사은품”들이 <a href="http://www.svennerberg.com/2008/12/page-load-times-vs-conversion-rates/" target="_blank" rel="external">성능 개선의 여지를 제공해주는 중요한 요소</a>가 될 수도 있다.</p>
+<h3 id="스타일시트-관리가-가능해진다"><a href="#스타일시트-관리가-가능해진다" class="headerlink" title="스타일시트 관리가 가능해진다."></a>스타일시트 관리가 가능해진다.</h3><p>구체성(specificity)과 씨름하느라 계속해서 불어나는 스타일 시트 대신에 OOCSS를 사용함으로써, <strong>관리가 쉬운 모듈화 된 코드</strong>를 얻을 수 있다. 이 모듈에서는 순수한 캐스케이딩이 중요하게 작동한다.</p>
+<p>이미 운영되고 있는 사이트에 무언가를 새로 만들고자 할 때, 기존 코드에 어떤 것들이 있는지 보지도 않고 맨 밑에 새로운 스타일을 추가하는 일을 방지할 수 있다. 대신 이미 존재하는 스타일 모듈을 다시 쓰면 되고 이를 바탕으로 확장해나가면 된다.</p>
+<p>이런 식으로 미래에 닥칠 일들을 생각하면서 작업을 하면, CSS 코드를 매우 조금만 작성하고도 전체 페이지를 만들 수 있다. 이미 존재하는 CSS 모듈이 나중에는 새로운 페이지의 바탕이 될 것이며, 그 어떤 새로운 CSS 코드라도 최소한으로 작성하게 될 것이다. 심지어 어떤 경우에는 CSS 작성을 할 필요도 없이 완전히 새로운 스타일을 적용한 페이지를 만들 수도 있을 것이다.</p>
+<p>이렇게 관리 가능해진 스타일 시트는 견고성을 띄게 된다. 스타일을 모듈 단위로 짰기 때문에, OOCSS를 바탕으로 한 페이지는 새로 개발자가 와서 유지보수를 하더라도 깨질 가능성이 작다.</p>
+<h2 id="짚고-넘어갈-만한-것들"><a href="#짚고-넘어갈-만한-것들" class="headerlink" title="짚고 넘어갈 만한 것들"></a>짚고 넘어갈 만한 것들</h2><p>OOCSS는 개발 커뮤니티에 큰 파문을 일으켰고, 많은 논란의 여지를 남기고 있다. 여기서 몇 가지 OOCSS에 대한 오해를 바로잡고자 한다.</p>
+<h3 id="ID는-여전히-사용가능하다"><a href="#ID는-여전히-사용가능하다" class="headerlink" title="ID는 여전히 사용가능하다."></a>ID는 여전히 사용가능하다.</h3><p>OOCSS의 방식대로 일을 진행하고자 결심했다면, 대부분 스타일이 ID 선택자 없이 클래스를 바탕으로 이루어질 것이다.</p>
+<p>이러한 이유로 OOCSS는 ID 사용에 반대한다고 오도하는 주장이 많이 보이는데, 그렇지 않다.</p>
+<p>ID 사용을 자제하라는 말을 좀 더 구체적으로 풀자면 <em>ID를 선택자로 사용하지 말라는 뜻이다.</em> <strong>HTML 내에서 자바스크립트나 부분 표시자(fragment identifier)로 사용하기 위해 ID 값을 사용하는 것은 OOCSS를 따르는 데 있어서 전혀 문제를 일으키지 않는다.</strong></p>
+<p>당연히 일부 경우에는 페이지를 통틀어 유일한 ID 값이 적용된 요소가 있을 것이다. 이런 경우, ID를 스타일 선택자로 사용함으로써 클래스 추가에 소모되는 몇 바이트를 줄일 수 있을 것이다. 그러나 이런 때에도 마찬가지로 후에 구체성과 씨름하는 경우가 생기지 않게 클래스를 이용하는 편이 훨씬 안전한 선택이다.</p>
+<h3 id="소규모-프로젝트에-적용하기"><a href="#소규모-프로젝트에-적용하기" class="headerlink" title="소규모 프로젝트에 적용하기"></a>소규모 프로젝트에 적용하기</h3><p>사이트나 앱의 규모가 작다면 OOCSS를 적용하기에는 과분하다고 생각할 수도 있다. 그렇기에 이 글을 OOCSS를 항상 사용하라고 주장하는 옹호의 글로 받아들이면 안 되고, 프로젝트마다 그 특성에 맞게 적용을 해야 한다.</p>
+<p>그렇지만 최소한 OOCSS의 관점에서 모든 프로젝트를 살펴보는 것은 좋은 선택이라고 생각한다. 일단 한번 적용 방법을 익혀둔다면, 좀 더 큰 규모의 프로젝트를 수월하게 진행하여 분명한 이득을 취할 수 있을 것이다.</p>
+<h2 id="적용-가이드라인"><a href="#적용-가이드라인" class="headerlink" title="적용 가이드라인"></a>적용 가이드라인</h2><p>OOCSS와 익숙해지는 데는 시간이 좀 걸릴 것이다. 필자 역시 여전히 노력하는 중이므로, 이 분야의 전문가가 되기에는 아직 멀었다.</p>
+<p>다음 목록은 OOCSS를 도입하고자 할 때 도움이 될 만한 것들이다:</p>
+<ul>
+<li>자손 선택자 사용하지 말기 (예: <code>.sidebar h3</code> 사용 하지 말기)</li>
+<li>ID를 스타일을 주기 위해 사용하지 말기</li>
+<li>요소에 클래스를 붙여서 사용하지 말기 (예: <code>div.header</code>나 <code>h1.title</code>과 같은 것들)</li>
+<li>몇몇 특별한 경우를 제외하고는, <code>!important</code> 쓰지 말기</li>
+<li><a href="http://csslint.net/" target="_blank" rel="external">CSS Lint</a>를 사용하여 CSS 검사해보기 (옵션 설정 가능)</li>
+<li><a href="http://www.stubbornella.org/content/2011/01/22/grids-improve-site-performance/" target="_blank" rel="external">CSS grids</a> 사용하기</li>
+</ul>
+<p>위에서 언급한 규칙이 적용되지 않을 사례가 분명 있을 것이지만, 전반적으로 좋은 개발습관을 길러줄 것이며 좀 더 용량이 작고 유지 보수하기 쉬운 스타일 시트를 만드는 데 도움이 될 것이다.</p>
+<h2 id="니콜-설리반-Nicole-Sullivan-팔로우하기"><a href="#니콜-설리반-Nicole-Sullivan-팔로우하기" class="headerlink" title="니콜 설리반(Nicole Sullivan) 팔로우하기"></a>니콜 설리반(Nicole Sullivan) 팔로우하기</h2><p>OOCSS에 대해 계속 알아보고 싶다면, <a href="http://www.stubbornella.org/content/" target="_blank" rel="external">니콜 설리번</a>을 제일 먼저 팔로우 해보자.</p>
+<p>니콜은 자신의 블로그에 정기적으로 OOCSS에 대한 글을 올리면서 발표도 몇 번 했다. 다음은 그녀가 지금까지 한 발표 중 필자가 추천하는 것들이다.</p>
+<ul>
+<li><a href="http://www.slideshare.net/stubbornella/object-oriented-css" target="_blank" rel="external">객체지향적 CSS</a>(슬라이드쇼)</li>
+<li><a href="https://developer.yahoo.com/blogs/ydn/high-performance-websites-nicole-sullivan-6939.html" target="_blank" rel="external">고성능 웹사이트: 니콜 설리번</a>(영상)</li>
+<li><a href="http://www.slideshare.net/stubbornella/our-best-practices-are-killing-us/11-ALEXA_TOP_1000_STUDY_with" target="_blank" rel="external">모범 사례가 우리를 망치고 있다</a>(슬라이드쇼)</li>
+<li><a href="http://www.slideshare.net/stubbornella/css-bloat" target="_blank" rel="external">땡땡 부풀어오른 CSS</a>(슬라이드쇼)</li>
+</ul>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>많은 사람이 OOCSS가 지금까지 배워 온 소위 “모범 사례”라 불리는 것들에 대치된다고 여기기 때문에 이 개념에 대한 두려움을 가지고 있다. 그러나 일단 한번 <strong>OOCSS를 사용함으로써 거시적인 혜택</strong>을 얻을 수 있다는 것을 깨달으면 많은 개발자들이 전향하리라고 확신한다.</p>
+<p>전체적으로 보았을 때 OOCSS는 CSS 개발 분야에서 장래성이 밝으며, 좀 더 빠르고, 성능 좋고, 유지 보수하기 쉬운 웹 페이지를 만들기 위해 개발자들이 이 개념을 적어도 최소한 어느 정도까지는 프로젝트에 적용하기 시작해야 한다고 생각한다.</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Young Bae</h4>
+    <p>A UI developer who loves to read anything that is written in English or Korean.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/09/21/introduction-to-OOCSS/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://gratiaa.github.io/young-blog/young-blog/2016/09/21/introduction-to-OOCSS/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/09/21/introduction-to-OOCSS/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/young-blog/2016/09/21/css-at-BBCsports-1/">
+        ← CSS at BBC Sports 1편
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/young-blog/2016/08/20/are-you-writing-CSS-regacy/">
+        지금 CSS 레거시 코드를 쓰고 있나요? →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/young-blog/">Young Blog</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/young-blog/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/young-blog/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>

@@ -23,6 +23,7 @@
    ========================================================================== */
 
 @import url(normalize.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 
 /* ==========================================================================
@@ -91,7 +92,7 @@ html {
 body {
     height: 100%;
     max-height: 100%;
-    font-family: 'Noto Serif', serif;
+    font-family: 'Noto Sans KR', serif;
     font-size: 2.0rem;
     line-height: 1.6em;
     color: #3A4145;
@@ -113,8 +114,9 @@ h1, h2, h3,
 h4, h5, h6 {
     text-rendering: optimizeLegibility;
     line-height: 1;
+	  font-weight: 300;
     margin-top: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 h1 {
@@ -396,7 +398,7 @@ margin on the iframe, cause it breaks stuff. */
     font-size: 5rem;
     letter-spacing: -1px;
     font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     text-shadow: 0 1px 6px rgba(0,0,0,0.1);
 }
 
@@ -443,6 +445,7 @@ margin on the iframe, cause it breaks stuff. */
 
 .post-title {
     margin:0;
+	  font-weight: bold;
 }
 
 .post-title a {
@@ -458,7 +461,7 @@ margin on the iframe, cause it breaks stuff. */
 .post-meta {
     display: inline-block;
     margin: 0 0 5px 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.5rem;
     color: #9EABB3;
 }
@@ -812,7 +815,7 @@ pre .chunk {
     width: 80%;
     max-width: 700px;
     margin: 4rem auto;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.3rem;
     color: #9EABB3;
     text-align: center;
@@ -862,7 +865,7 @@ pre .chunk {
     margin: 8rem 0 0 0;
     padding: 4rem 0;
     border-top: #EBF2F6 1px solid;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.3rem;
     line-height: 1.7em;
     color: #BBC7CC;

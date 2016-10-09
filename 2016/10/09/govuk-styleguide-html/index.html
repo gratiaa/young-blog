@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>GOV.UK 스타일가이드 (HTML) | Young Blog</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/young-blog/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Young Blog">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="background-image: url(//blog.ghost.org/content/images/2013/Nov/cover.png)" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/young-blog/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Young Blog</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-10-09T11:22:04.000Z" itemprop="datePublished">
+          2016-10-09
+      </time>
+    
+    
+    | 
+    <a href='/young-blog/tags/HTML/'>HTML</a>
+    
+    
+</span>
+    <h1 class="post-title">GOV.UK 스타일가이드 (HTML)</h1>
+    <section class="post-content">
+      <p><a href="https://github.com/alphagov/styleguides" target="_blank" rel="external">해당 github 바로가기</a></p>
+<p>본 문서는 깃허브에 공유된 영국 정부 애플리케이션 개발 지침 문서 중 일부를 번역한 것입니다.</p>
+<hr>
+<h2 id="항상-속성-값은-따옴표로-감싸기"><a href="#항상-속성-값은-따옴표로-감싸기" class="headerlink" title="항상 속성 값은 따옴표로 감싸기"></a>항상 속성 값은 따옴표로 감싸기</h2><p>써야 하는 곳과 안써야 하는 곳을 구분하는 작업은 기준이 모호하므로, 그냥 따옴표로 다 감싸도록 한다.</p>
+<h2 id="항상-잘-정돈된-HTML을-쓴다"><a href="#항상-잘-정돈된-HTML을-쓴다" class="headerlink" title="항상 잘 정돈된 HTML을 쓴다"></a>항상 잘 정돈된 HTML을 쓴다</h2><p><code>&lt;p&gt;</code>태그를 닫는 것을 까먹는 등 제대로 태그를 닫지 않으면 불필요한 파싱으로 인해 성능이 저하되며 접근성 문제도 발생한다.</p>
+<h2 id="ARIA역할-ARIA-role-을-적절하게-사용하기"><a href="#ARIA역할-ARIA-role-을-적절하게-사용하기" class="headerlink" title="ARIA역할(ARIA role)을 적절하게 사용하기"></a><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank" rel="external">ARIA</a>역할(ARIA role)을 적절하게 사용하기</h2><p>HTML5 영역 구분(sectioning) 요소를 사용시 ARIA 랜드마크 역할도 함께 포함시키면 좋다. 랜드마크를 영역 구분 요소에 넣어 사용하면 HTML5와 ARIA를 모두 지원하는 스크린 리더가 정보를 중복으로 받아들이는 것을 방지할 수 있다.</p>
+<ul>
+<li>예: <code>&lt;header role=&quot;banner&quot;&gt;&lt;/header&gt;</code></li>
+</ul>
+<p>다음의 역할들은 HTML5 영역 구분 요소에 직접 적용할 수 있다.</p>
+<ul>
+<li><code>role=&quot;main&quot;</code>은 <code>&lt;main&gt;</code>요소에 적용 가능</li>
+<li><code>role=&quot;complementary&quot;</code>는 <code>&lt;aside&gt;</code>요소에 적용 가능</li>
+<li><code>role=&quot;contentinfo&quot;</code>는 <code>&lt;footer&gt;</code>요소에 적용 가능</li>
+<li><code>role=&quot;navigation&quot;</code>은 <code>&lt;nav&gt;</code>요소에 적용 가능</li>
+</ul>
+<p><a href="http://tink.uk/screen-readers-aria-roles-html5-support/" target="_blank" rel="external">Leonie Watson의 글</a>을 읽어 보면 왜 이런식으로 ARIA 랜드마크 역할을 사용하는 것이 스크린 리더 사용자 경험 향상에 최적인 방법인지 알 수 있다.</p>
+<p>좀 더 심도깊은 적용 가이드를 원하면 <a href="https://www.paciellogroup.com/blog/2013/02/using-wai-aria-landmarks-2013/" target="_blank" rel="external">Paciello 그룹의 가이드</a>를 참고하라.</p>
+<p>다음 랜드마크는 HTML5 요소에 직접 적용하는 것은 불가능하지만, 다른 요소와 사용하기에 괜찮은 것들이다.</p>
+<ul>
+<li><code>role=&quot;search&quot;</code></li>
+<li><code>role=&quot;application&quot;</code></li>
+</ul>
+<h2 id="메인-콘텐츠"><a href="#메인-콘텐츠" class="headerlink" title="메인 콘텐츠"></a>메인 콘텐츠</h2><p> <code>&lt;main&gt;</code> 태그는 페이지 내의 메인 콘텐츠를 나타내기 위해 사용해야 한다. 이 태그에 대한 지원이 아직 미흡한 부분이 있을 수 있으므로 <code>role=&quot;main&quot;</code>속성을 함께 사용한다.</p>
+<h2 id="콘텐츠-영역-나누기"><a href="#콘텐츠-영역-나누기" class="headerlink" title="콘텐츠 영역 나누기"></a>콘텐츠 영역 나누기</h2><p> <code>&lt;section&gt;</code>태그 사용시, <code>aria-labelledby</code>속성값을 제목 요소의 <code>id</code> 속성값과 연결하여 해당 영역을 규정한다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">aria-labelledby</span>=<span class="string">"advice"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">"advice"</span>&gt;</span>Help and Advice<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    ....</div><div class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="네비게이션-요소"><a href="#네비게이션-요소" class="headerlink" title="네비게이션 요소"></a>네비게이션 요소</h2><p> <code>&lt;nav&gt;</code> 태그 사용시, <code>role=&quot;navigation&quot;</code> 랜드마크를 넣어준다. <a href="https://insidegovuk.blog.gov.uk/2013/07/03/rethinking-navigation/" target="_blank" rel="external">링크</a>를 보면 <code>&lt;nav&gt;</code> 태그에 대해 더 자세히 알아볼 수 있다.</p>
+<h2 id="네비게이션-요소-강조하기"><a href="#네비게이션-요소-강조하기" class="headerlink" title="네비게이션 요소 강조하기"></a>네비게이션 요소 강조하기</h2><p>네비게이션 리스트에서 현재 위치를 표시하고 싶으면 <code>&lt;strong&gt;</code>태그를 사용한다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">role</span>=<span class="string">"navigation"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/business"</span>&gt;</span>Business<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>Business Rates<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>의미론적으로 따져보면 <code>&lt;strong&gt;</code> 태그를 사용하는 것이 <code>&lt;em&gt;</code>보다 적절하며, 꽤나 널리 알려진 코딩 규약이다.</p>
+<h2 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h2><p>위의 규칙들을 잘 따른다면 HTML 문서 길이를 적절하게 조절할 수 있다. 마크업을 너무 과하게 하면 가독성이 떨어진다.</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Young Bae</h4>
+    <p>A UI developer who loves to read anything that is written in English or Korean.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/10/09/govuk-styleguide-html/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://gratiaa.github.io/young-blog/young-blog/2016/10/09/govuk-styleguide-html/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/10/09/govuk-styleguide-html/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/young-blog/2016/09/21/css-at-BBCsports-1/">
+        CSS at BBC Sports 1편 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/young-blog/">Young Blog</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/young-blog/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/young-blog/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
