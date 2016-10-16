@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Young Blog</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/young-blog/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Young Blog">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff7a7c+0,ffd53f+100 */
+background: #ff7a7c; /* Old browsers */
+background: -moz-linear-gradient(45deg,  #ff7a7c 0%, #ffd53f 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg,  #ff7a7c 0%,#ffd53f 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg,  #ff7a7c 0%,#ffd53f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7a7c', endColorstr='#ffd53f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/young-blog/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Young Blog</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-10-14T13:10:42.000Z" itemprop="datePublished">
+          2016-10-14
+      </time>
+    
+</span>
+    <h1 class="post-title"></h1>
+    <section class="post-content">
+      <h1 id="WAI-ARIA-사용에-관한-노트"><a href="#WAI-ARIA-사용에-관한-노트" class="headerlink" title="WAI-ARIA 사용에 관한 노트"></a>WAI-ARIA 사용에 관한 노트</h1><p><a href="https://w3c.github.io/aria-in-html/" target="_blank" rel="external">문서 바로가기: Notes on Using ARIA in HTML(2016년 9월 18일)</a></p>
+<h2 id="첫번째-규칙"><a href="#첫번째-규칙" class="headerlink" title="첫번째 규칙"></a>첫번째 규칙</h2><p><em>이미 존재하는</em> 네이티브 HTML 요소나 속성을 사용하여 그 요소의 의미나 행동을 규정할 수 있을 때, 다른 요소와 ARIA 역할 속성을 사용하는 것은 피하도록 한다. 만일 상태나 속성값을 추가하여 접근성 향상을 할 수 있으면 추가하도록 한다. HTML5에서 새로 추가된 <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>등의 의미를 담고 있는 요소들을 충분히 사용하자.</p>
+<p><em>네이티브 HTML 요소나 속성을 사용할 수 없는 경우는 어떤 것들이 있을까?</em></p>
+<ul>
+<li>HTML에 속성 명시는 되어 있지만 구현이 되지 않은 경우. 혹은 구현은 되었으나 <a href="http://www.html5accessibility.com" target="_blank" rel="external">접근성 지원</a>이 되지 않는 경우.</li>
+<li>요소의 스타일을 네이티브 스타일이 아닌, 원하는 디자인으로 바꿀 수 없는 경우.</li>
+<li>현재 HTML에서 속성이 지원이 되지 않는 경우.</li>
+</ul>
+<h2 id="두번째-규칙"><a href="#두번째-규칙" class="headerlink" title="두번째 규칙"></a>두번째 규칙</h2><p>꼭 필요한 경우가 아니라면 요소가 원래 가지고 있는 의미를 변경하면 안된다.</p>
+<p>예: 버튼 역할을 하는 제목 요소를 만들고 싶을 때,<br>이렇게 하면 안된다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">role</span>=<span class="string">button</span>&gt;</span>heading button<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">대신 이렇게 하라.</div><div class="line"></div><div class="line">```html</div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>heading button<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">혹은 정확한 요소를 사용할 수 없는 경우에는 이렇게 하라.</div><div class="line"></div><div class="line">```html</div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">role</span>=<span class="string">button</span>&gt;</span>heading button<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">* 참고: 만일 인터렉션이 없는 요소를 인터렉션 요소로 사용해야 하는 경우, 개발자는 ARIA와 적절한 인터렉션을 구현하는 스크립트를 추가하여 의미를 부여해야 한다. 버튼의 경우, [네이티브 버튼 요소](https://www.paciellogroup.com/blog/2011/04/html5-accessibility-chops-just-use-a-button/)를 사용하는 편이 훨씬 간단하고 적절하다.</div><div class="line">* 참고: 네이티브 HTML 요소에 대비책으로 동일한 의미를 가지는 ARIA 역할을 추가해 주는 것은 괜찮다.</div><div class="line"></div><div class="line">## 세번째 규칙</div><div class="line"></div><div class="line">인터렉션이 있는 모든 ARIA 컨트롤 요소들은 키보드로 조작이 가능해야 한다.</div><div class="line"></div><div class="line">만일 클릭하거나 탭, 드래그&amp;드롭, 슬라이드, 스크롤 등의 인터렉션을 사용하는 위젯을 개발한다면 사용자는 키보드만을 사용해서도 마우스를 사용한 탐색 및 조작때와 똑같은 결과를 얻을 수 있어야 한다.</div><div class="line"></div><div class="line">인터렉션이 있는 모든 위젯을 키보드 입력 및 단축키 조합에 응답이 가능하도록 스크립팅 처리 해야 한다. 예를 들어, `role="button"` 요소를 사용하는 경우 무조건 포키보드를 사용한 포커스를 받을 수 있어야 하며 요소와 관련한 액션을 취할 수 있어야 한다. 이 때 `enter`(윈도우), `return`(맥), `space`키 모두를 사용할 수 있어야 한다.</div><div class="line"></div><div class="line">[키보드 및 구조 네비게이션](https://www.w3.org/WAI/PF/aria-practices/#keyboard)과 [WAI-ARIA 1.0 사용 가이드](https://www.w3.org/TR/wai-aria-practices/)의 디자인 패턴 섹션을 참고하라.</div><div class="line"></div><div class="line">## 네번째 규칙</div><div class="line"></div><div class="line">`role="presentation"`이나 `aria-hidden="true"`를 **키보드 포커스를 받을 수 있는** *보이는* 요소에 적용하지 않도록 한다.</div><div class="line"></div><div class="line">**키보드 포커스를 받을 수 있으며** *보이는* 요소에 이 둘 중의 하나를 사용한다는 것은 '아무것도 아닌 것'에 포커스를 주는 결과를 가져다 줄 수 있다.</div><div class="line"></div><div class="line">이렇게 하면 안된다.</div><div class="line"></div><div class="line">```html</div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">role</span>=<span class="string">presentation</span>&gt;</span>press me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">혹은 이렇게 해서도 안된다.</div><div class="line"></div><div class="line">```html</div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span>press me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">``` </div><div class="line"></div><div class="line">만약 인터렉션 가능한 요소가 **보이지 않거나 인터렉션이 불가능해진다면**, `aria-hidden`을 적용할 수 있다. 예를 들어,</div><div class="line"></div><div class="line">```html</div><div class="line">button &#123;display:none&#125;</div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span>press me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="다섯번째-규칙"><a href="#다섯번째-규칙" class="headerlink" title="다섯번째 규칙"></a>다섯번째 규칙</h2><p>인터렉션이 있는 모든 요소에는 <a href="https://www.w3.org/TR/accname-aam-1.1/#dfn-accessible-name" target="_blank" rel="external">접근 가능한 이름(accessible name)</a>이 있어야만 한다.</p>
+<p>인터렉션이 있는 요소는 접근성 API에서 접근성 이름(혹은 이에 상응하는) 속성 값이 존재할 경우에만 접근 가능한 이름을 가진다.</p>
+<p>예를 들어, 아래의 코드에서 <code>input type=&quot;text&quot;</code>는 ‘user name’이라는 보이는 이름표를 가지고 있지만, 접근 가능한 이름은 가지고 있지 않다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- &lt;label&gt; 요소가 사용되었긴 하지만, 이 요소에 적용되어야 접근 가능한 이름이 없다. --&gt;</span></div><div class="line"></div><div class="line">user name <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>user name<span class="tag">&lt;/<span class="name">label</span>&gt;</span> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>반대로, 아래의 코드에서 <code>input type=&quot;text&quot;</code>는 ‘user name’이라는 보이는 이름표와 접근 가능한 이름을 둘 다 가지고 있다. 이 예시에서는 접근가능한 이름이 존재하는데, 이는 <code>input</code>요소가 레이블을 붙일 수 있는 요소이고 <code>label</code>요소가 <code>input</code>요소와 적절하게 관련을 가지고 있기 때문이다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- <span class="doctag">Note:</span> </span></div><div class="line">for/id 혹은 텍스트나 컨트롤 메서드를 레이블로 감싸면</div><div class="line">접근가능한 이름이 부여된다.--&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>user name <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"uname"</span>&gt;</span>user name<span class="tag">&lt;/<span class="name">label</span>&gt;</span> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"uname"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>label</code>요소는 커스텀 컨트롤에는 사용할 수 없다. 다만 <code>label</code>요소가 네이티브 HTML 요소 중 레이블을 붙일 수 있는 요소를 가리키고 있는 경우는 제외한다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 콤보박스 역할을 가지고 있는 HTML input 요소 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>user name <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">role</span>=<span class="string">"combobox"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>div</code>요소는 부여한 역할이 무엇이든 간에 레이블을 붙일 수 있는 요소가 아니다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 콤보박스 역할을 가지고 있는 div 요소 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">user name <span class="tag">&lt;<span class="name">div</span> <span class="attr">role</span>=<span class="string">"combobox"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="이미-자신만의-의미를-가지고-있는-요소에-역할을-부여하면-어떻게-될까"><a href="#이미-자신만의-의미를-가지고-있는-요소에-역할을-부여하면-어떻게-될까" class="headerlink" title="이미 자신만의 의미를 가지고 있는 요소에 역할을 부여하면 어떻게 될까?"></a>이미 자신만의 의미를 가지고 있는 요소에 역할을 부여하면 어떻게 될까?</h2><p>이미 의미를 지닌 요소에 ARIA 역할을 부여하면 이 역할이 <a href="https://www.w3.org/WAI/PF/aria-implementation/#def_accessibility_tree" target="_blank" rel="external">접근성 트리(accessibility tree)</a>내 해당하는 요소의 의미를 덮어쓴다. 이로 인해 ARIA는 간접적으로 스크린 리더 혹은 다른 보조 기기들에 영향을 끼칠 수 있다.</p>
+<p>예를 들어, 다음과 같은 HTML 트리가 있다 하면,</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">role</span>=<span class="string">button</span>&gt;</span>text<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>접근성 트리에서는 다음과 같이 보여진다.</p>
+<p><img src="https://www.w3.org/TR/aria-in-html/heading-button.png" alt=""></p>
+<p><em>의미를 부여해도 바뀌지 않는 것들</em></p>
+<p>ARIA 역할을 추가해도 보조 기기를 <strong>사용하지 않는</strong> 사람들이 보기에는 요소의 형태나 행동이 다르게 보이지 않는다. 요소의 행동, 상태, 프로퍼티는 <strong>바뀌지 않지만</strong>, 요소가 원래 가지고 있던 역할의 의미는 변경된다.</p>
+<p>예를 들어, 다음과 같은 HTML 코드가 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">role</span>=<span class="string">heading</span> <span class="attr">aria-level</span>=<span class="string">1</span>&gt;</span>text<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>접근성 트리에서는 다음과 같이 보인다.</p>
+<p><img src="https://www.w3.org/TR/aria-in-html/heading.png" alt=""></p>
+<p><strong>그렇지만</strong> 여전히 이 요소는 클릭할 수 있으며, 보여지는 순서도 바뀌지 않고, 버튼처럼 보이며 눌렀을 때 관련된 행동을 취한다. 그렇기 때문에 버튼 요소를 제목으로 바꾸려고 하면 HTML5 적합성 오류가 나는 것이다.</p>
+<ul>
+<li>참고: 요소에 역할을 추가한다고 해서 그 요소의 행동이나 프로퍼티 혹은 상태가 추가되지는 <strong>않는다.</strong> ARIA는 요소가 브라우저내에서 하는 행동이나 스타일을 변경하지 않는다. 예를 들어, 링크가 버튼처럼 행동하도록 지정된 경우, <code>role=&quot;button&quot;</code>을 링크 요소에 추가하는 것만으로는 충분하지 않다. 버튼처럼 행동하도록 키 이벤트 헨들러를 추가하는 등 진짜 버튼처럼 행동하도록 별도의 조취를 취해야 한다. 왜냐하면 네이티브 버튼 요소는 엔터 키나 스페이스바를 사용하면 동작하기 때문이다.</li>
+</ul>
+<h2 id="ARIA는-인라인으로-추가하나-아니면-스크립트로"><a href="#ARIA는-인라인으로-추가하나-아니면-스크립트로" class="headerlink" title="ARIA는 인라인으로 추가하나 아니면 스크립트로?"></a>ARIA는 인라인으로 추가하나 아니면 스크립트로?</h2><p>ARIA 역할이나 aria-<em> 속성이 인터렉션을 구현하기 위한 스크립트에 <em>*의존하지 않는다면</em></em>, ARIA 마크업을 인라인으로 추가해도 된다. 예를 들어, ARIA 랜드마크 역할이나 레이블이나 묘사와 관련된 속성은 인라인으로 추가해도 괜찮다.</p>
+<p>만일 <a href="https://docs.google.com/document/u/0/?pli=1&amp;usp=direct_url&amp;showDriveBanner=true#" target="_blank" rel="external">구글 문서</a>(사용하려면 자바스크립트가 필요함)와 같이 콘텐츠와 인터렉션이 <strong>스크립트 활성화된 브라우저에서만 지원이 된다면</strong>, 자바스크립트가 비활성화 되면 애플리케이션이 작동 하지 않을 것이므로 이러한 경우 역시 ARIA 마크업을 인라인으로 추가해도 된다.</p>
+<p><strong>다른 경우에는</strong>, 스크립트로 ARIA 관련 속성을 입력, 변경, 제거하라. 예를 들어, 트리 위젯이 접혀 졌을 때의 마크업은 다음과 같다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">role</span>=<span class="string">treeitem</span> <span class="attr">aria-expanded</span>=<span class="string">false</span> <span class="attr">...</span>&gt;</span>....<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>만일 위젯이 펼쳐진다면 자바스크립트로 속성을 다음과 같이 변경시킨다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">role</span>=<span class="string">treeitem</span> <span class="attr">aria-expanded</span>=<span class="string">true</span> <span class="attr">...</span>&gt;</span>....<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="ARIA-유효성-검사"><a href="#ARIA-유효성-검사" class="headerlink" title="ARIA 유효성 검사"></a>ARIA 유효성 검사</h2><p>가장 쉬운 방법은 HTML5 DOCTYPE과 함께 ARIA 마크업을 적용하고, <a href="http://validator.w3.org/nu/" target="_blank" rel="external">새로운 W3C 마크업 검사기(W3C Nu Markup Checker)</a>로 오류 체크를 하는 것이다. ARIA는 다른 <code>DOCTYPE</code>과도 잘 호환이 되지만, 해당 DTD가 ARIA 마크업에 대한 업데이트가 이루어지지 않았다면 유효성 검사기가 에러를 발생시킬 수 있다. 또한 업데이트가 이루어질 것 같지도 않다.</p>
+<p>HTML5 이전 버전에서 ARIA 관련 유효성 에러가 나타났다고 해서 실제 사용자들에게 접근성 문제를 안겨준다는 것은 아니다. 다만 예전의 자동화된 유효성 검사기들이 ARIA와의 호응이 좋지 않기 때문에 발생하는 것이다.</p>
+<ul>
+<li>참고: 새로운 W3C 마크업 검사기는 현재 개발 중이기 때문에 (엄청 좋긴 해도) 완벽하게 믿을만한 결과를 내놓지는 못한다. 만일 사용 중에 ARIA 스펙이나 HTML 스펙에 있는 ARIA 적합성 요구사항과 충돌하는 상황이 발생하면, <a href="https://github.com/validator/validator/issues" target="_blank" rel="external">이슈 리포트</a>를 부탁한다.</li>
+</ul>
+<h2 id="role-quot-presentation-quot-사용하기"><a href="#role-quot-presentation-quot-사용하기" class="headerlink" title="role=&quot;presentation&quot; 사용하기"></a><code>role=&quot;presentation&quot;</code> 사용하기</h2><p><code>role=&quot;presentation&quot;</code>은 요소에 부여된 의미를 없앤다.<br>예를 들어, 다음과 같은 코드가 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">role</span>=<span class="string">"presentation"</span>&gt;</span>text<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>접근성 트리에서 보면 다음과 같다.</p>
+<p><img src="https://www.w3.org/TR/aria-in-html/text.png" alt=""></p>
+<p>접근성 트리에서는 해당 요소가 <strong>아무런 의미가 없는</strong> 문자열로 보인다.</p>
+<p> 필수적으로 자식 요소를 가져야 하는 요소가 아니라면, <code>role=&quot;presentation&quot;</code>이 부여된 요소 안에 자리잡은 요소들의 경우에는 원래 부여된 의미가 보존된다. 예를 들어, 다음과 같은 코드가 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">role</span>=<span class="string">"presentation"</span>&gt;</span><span class="tag">&lt;<span class="name">abbr</span>&gt;</span>API<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>위의 요소는 접근성 트리에서 다음과 같이 보인다.</p>
+<p><img src="https://www.w3.org/TR/aria-in-html/h1.png" alt=""></p>
+<p><code>ul</code>이나 <code>table</code>과 같이 자식요소가 존재해야 하는 요소가 만약 <code>role=&quot;presentation&quot;</code> 속성을 가지고 있다면 안에 자리잡는 자식 요소들의 의미는 사라진다. 예를 들어, 다음과 같은 코드가 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">role</span>=<span class="string">"presentation"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">abbr</span>&gt;</span>API<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>이는 접근성 트리에서 다음과 같이 보인다.</p>
+<p><img src="https://www.w3.org/TR/aria-in-html/abbr.png" alt=""></p>
+<ul>
+<li>참고: (중첩된 테이블이나 중첩된 리스트 등) 자기 자신과 같은 요소를 자손 요소로 가지는 경우에는, 자기 자신이 <code>role=presentation</code>값을 가져서 의미를 잃어버린다고 하더라도 자손 요소의 의미는 보존된다.</li>
+</ul>
+<p>예를 들어 바깥쪽 <code>table</code> 요소에 <code>role=presentation</code>을 부여했다고 하자.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">role</span>=<span class="string">"presentation"</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">abbr</span>&gt;</span>API<span class="tag">&lt;/<span class="name">abbr</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>접근성 트리에서 보면, 자손 <code>table</code>요소와 그 자식들(<code>tr</code>과 <code>td</code>요소)는 여전히 자신의 의미를 가지고 있다. 바깥쪽 테이블 요소들만 없어졌을 뿐이다.</p>
+<p><img src="https://www.w3.org/TR/aria-in-html/table.png" alt=""></p>
+<h3 id="role-quot-presentation-quot-사용예"><a href="#role-quot-presentation-quot-사용예" class="headerlink" title="role=&quot;presentation&quot; 사용예"></a><code>role=&quot;presentation&quot;</code> 사용예</h3><p>부정확한 테이블 구조 수정할 때</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">aria-readonly</span>=<span class="string">"true"</span> <span class="attr">role</span>=<span class="string">"grid"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">role</span>=<span class="string">"presentation"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">tr</span> <span class="attr">role</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">th</span> <span class="attr">role</span>=<span class="string">"columnheader"</span>&gt;</span>Dog Names<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">th</span> <span class="attr">role</span>=<span class="string">"columnheader"</span>&gt;</span>Cat Names<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">th</span> <span class="attr">role</span>=<span class="string">"columnheader"</span>&gt;</span>Cow names<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">role</span>=<span class="string">"presentation"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">tr</span> <span class="attr">role</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">td</span> <span class="attr">role</span>=<span class="string">"gridcell"</span>&gt;</span>Fido<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">td</span> <span class="attr">role</span>=<span class="string">"gridcell"</span>&gt;</span>Whiskers<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">td</span> <span class="attr">role</span>=<span class="string">"gridcell"</span>&gt;</span>Clarabella<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">tr</span> <span class="attr">role</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">td</span> <span class="attr">role</span>=<span class="string">"gridcell"</span>&gt;</span>Woofie<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">td</span> <span class="attr">role</span>=<span class="string">"gridcell"</span>&gt;</span>Claws<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">td</span> <span class="attr">role</span>=<span class="string">"gridcell"</span>&gt;</span>Glenn<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="aria-labelledby와-aria-describedby-소개"><a href="#aria-labelledby와-aria-describedby-소개" class="headerlink" title="aria-labelledby와 aria-describedby 소개"></a><code>aria-labelledby</code>와 <code>aria-describedby</code> 소개</h2><h3 id="실제-지원상황"><a href="#실제-지원상황" class="headerlink" title="실제 지원상황"></a>실제 지원상황</h3><p>2016년 9월 현재 <code>aria-labelledby</code>와 <code>aria-describedby</code>는 상호작용이 가능한 콘텐츠 요소에 관련된 텍스트 콘텐츠를 지원할 때 사용한다. 이 글이 작성되는 시점에서 볼 때 이 두가지 속성들은 링크에서는 <strong>작동하지 않으며</strong>, 임베디드 콘텐츠에서는 지원이 되는지 알려지지 않았으나, 입력(input) 타입들을 비롯한 폼 컨트롤에서는 사용가능하다.</p>
+<p>만약 인터넷 익스플로러에서 <code>aria-labelledby</code>를 <code>id</code> 레퍼런스 여러개와 같이 사용하는 경우, 혹은 <code>aria-describedby</code>를 하나 혹은 여러개의 <code>id</code> 레퍼런스와 사용하는 경우에는 이 속성들이 가르키는 요소들은 <strong>반드시</strong> 마이크로소프트에서 정의한 <a href="https://msdn.microsoft.com/library/gg701963(v=vs.85" target="_blank" rel="external">접근가능한 HTML 요소</a>.aspx#Accessible_HTML_Elements)이어야 한다.</p>
+<p>다음 코드는 <code>aria-labelledby</code>를 여러 개의 레퍼런스와 함께 사용해 본 예시이다. <a href="https://msdn.microsoft.com/library/gg701963(v=vs.85" target="_blank" rel="external">접근 불가능한 요소를 가능하게 만들기 페이지</a>.aspx#Making_Nonaccessible_Elements_Accessible)를 참고하라.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">id</span>=<span class="string">"l1"</span> <span class="attr">for</span>=<span class="string">"f3"</span>&gt;</span>label text<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"f3"</span> <span class="attr">aria-labelledby</span>=<span class="string">"l1 l2"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>other content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">tabindex</span>=<span class="string">"-1"</span> <span class="attr">id</span>=<span class="string">"l2"</span> &gt;</span>more label text<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>또한, 요소가 ARIA 역할을 가지고 있을 경우 인터넷 익스플로러에서는 해당 요소가 접근가능한 HTML 요소가 된다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">aria-describedby</span>=<span class="string">"test"</span>&gt;</span>text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test"</span> <span class="attr">role</span>=<span class="string">"tooltip"</span>&gt;</span>tooltip text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="컨텐츠를-숨기는-것은-접근-가능한-이름-혹은-세부설명-description-을-가려내는-데-아무런-영향을-주지-않는다"><a href="#컨텐츠를-숨기는-것은-접근-가능한-이름-혹은-세부설명-description-을-가려내는-데-아무런-영향을-주지-않는다" class="headerlink" title="컨텐츠를 숨기는 것은 접근 가능한 이름 혹은 세부설명(description)을 가려내는 데 아무런 영향을 주지 않는다."></a>컨텐츠를 숨기는 것은 접근 가능한 이름 혹은 세부설명(description)을 가려내는 데 아무런 영향을 주지 않는다.</h3><p>디자인적인 이유로 인해 (CSS의 <code>display:none</code> 혹은 <code>visibility:hidden</code>, 또는 HTML의 <code>hidden</code> 속성을 사용하여) <code>aria-labelledby</code>나 <code>aria-describedby</code>가 가리키는 요소의 콘텐츠를 숨긴다고 해서 요소의 이름이나 세부설명에 접근이 불가능한 것은 아니다.</p>
+<blockquote>
+<p>기본적으로 보조 기기에서 숨겨진 정보를 제공하지는 않지만, 개발자가 임의대로 숨긴 텍스트를 <code>aria-labelledby</code> 혹은 <code>aria-describedby</code>를 써서 접근가능한 이름이나 세부설명으로 포함시킬 수 있다.</p>
+<ul>
+<li><a href="https://www.w3.org/TR/accname-aam-1.1/#details-id-0" target="_blank" rel="external">접근 가능한 이름 혹은 세부설명: 산출 및 API 매핑 1.1</a></li>
+</ul>
+</blockquote>
+<p>다음의 예시는 에러가 발생하지 않은 상태와 발생한 상태에서 모두 보조 기기가 세부설명에 접근가능함을 보여준다.</p>
+<p><strong>에러가 발생하지 않은 상태</strong>: 메시지가 화면에서는 숨겨져 있음.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>이름<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">aria-describedby</span>=<span class="string">"error-message"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"error-message"</span> <span class="attr">style</span>=<span class="string">"display:none"</span>&gt;</span>잘못된 이름을 입력하셨습니다.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>참고: <code>aria-hidden=true</code>를 레퍼런스 요소에 추가해도 차이가 발생하지 않는다.</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"error-message"</span> <span class="attr">style</span>=<span class="string">"display:none"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span>잘못된 이름을 입력하셨습니다.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>에러가 발생한 상태</strong>: 메시지가 화면에 나타남.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"error-message"</span> <span class="attr">style</span>=<span class="string">"display:inline"</span>&gt;</span>잘못된 이름을 입력하셨습니다.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="상황에-알맞는-이름이나-세부설명-텍스트를-제공하는-방법"><a href="#상황에-알맞는-이름이나-세부설명-텍스트를-제공하는-방법" class="headerlink" title="상황에 알맞는 이름이나 세부설명 텍스트를 제공하는 방법"></a>상황에 알맞는 이름이나 세부설명 텍스트를 제공하는 방법</h3><p>에러 메시지와 같이 특수한 상황에 맞는 텍스트를 제공하고 싶다면 다음과 같은 방법을 사용하라.</p>
+<ul>
+<li>에러가 발생할 때, DOM에 레퍼런스 요소를 추가하라.</li>
+<li>에러 텍스트를 DOM에 추가된 레퍼런스 요소의 자식으로 추가하라.</li>
+<li>그 후 <code>aria-labelledby</code> 혹은 <code>aria-describedby</code>를 레퍼런스 요소가 가르키는 요소에 추가하라.</li>
+</ul>
+<h2 id="ARIA-role-quot-application-quot-사용하기"><a href="#ARIA-role-quot-application-quot-사용하기" class="headerlink" title="ARIA role=&quot;application&quot; 사용하기"></a>ARIA <code>role=&quot;application&quot;</code> 사용하기</h2><h3 id="role-quot-application-quot-이-스크린-리더에-미치는-영향은-무엇이-있나"><a href="#role-quot-application-quot-이-스크린-리더에-미치는-영향은-무엇이-있나" class="headerlink" title="role=&quot;application&quot;이 스크린 리더에 미치는 영향은 무엇이 있나?"></a><code>role=&quot;application&quot;</code>이 스크린 리더에 미치는 영향은 무엇이 있나?</h3><p>오늘날 많은 스크린 리더기의 브라우저 모드에서 대부분의 키입력은 웹 페이지가 아니라 스크린 리더기에 의해 감지된다. 이러한 감지는 페이지를 효율적으로 탐색하기 위해 필요하다. 이 글을 쓰는 시점에서, 애플리케이션 모드로 전환을 하면 많은 스크린 리더기가 키입력 감지를 중단하고 모든 입력 감지 과정을 브라우저로 넘긴다. 그렇게 되면 사용자는 페이지 탐색을 쉽게 할 수가 없다. 예를 들어 페이지를 제목 단위로 건너 뛰거나 정적인 텍스트 문단을 줄 단위로 읽는 것이 불가능하다. 그러나 몇몇 스크린 리더기에서는 애플리케이션 모드로 설정되더라도 다르게 동작하는 경우가 있다.</p>
+<h3 id="그럼-언제-사용하고-언제는-사용하면-안되나"><a href="#그럼-언제-사용하고-언제는-사용하면-안되나" class="headerlink" title="그럼 언제 사용하고, 언제는 사용하면 안되나?"></a>그럼 언제 사용하고, 언제는 사용하면 안되나?</h3><p>이 속성을 사용하고자 한다면, 다른 무엇보다도 키보드 단축키 기능을 잃는 것을 감수한 결과가 과연 가치가 있는 것인지에 대해 생각을 해보아야 한다. 대부분의 경우에는 그렇지 않을 것이며, 만약 그러한 경우에는 스크린 리더기 사용자를 대상으로 사용성 테스트를 진행해야 한다.</p>
+<p>만약 표준 HTML에 속하는 위젯만을 컨트롤 대상으로 한다면 <code>role=&quot;application&quot;</code>은 <strong>사용하지 말아야 한다.</strong> 또한 표준 HTML 위젯 대신 ARIA 역할을 사용하여 상호작용 가능한 모델을 만든 경우 역시 사용하면 안된다.</p>
+<p><em>참고</em> </p>
+<p>직접 커스텀 텍스트 입력 위젯을 만드는 것은 권장하지 않는다. 거의 항상 기본으로 내장된 입력 위젯을 쓰는 것이 최선의 방법이다.</p>
+<ul>
+<li><code>text box</code>: 비밀번호, 검색(search), 전화번호(tel) 등등 <code>type</code>으로 부여할 수 있는 모든 값들 역시 포함된다.</li>
+<li><code>textarea</code></li>
+<li><code>checkbox</code></li>
+<li><code>button</code></li>
+<li><code>radio button</code> (보통 필드셋이나 <code>legend</code> 요소로 감싸져 있음)</li>
+<li><code>select</code> + <code>option(s)</code></li>
+<li><code>links</code>, <code>paragraphs</code>, <code>headings</code> 을 비롯한 웹 문서에 기본으로 내장된 요소들</li>
+</ul>
+<p>만약 위젯이 동적이거나 기본 위젯이 아닐 경우에도 <code>application</code> 역할을 부여하면 <strong>안된다.</strong> WAI-ARIA를 지원하는 스크린 리더기나 다른 보조 기기들은 기본적으로 브라우징과 포커스 모드 전환 기능을 제공한다.</p>
+<ul>
+<li><code>tree view</code></li>
+<li><code>slider</code></li>
+<li>방향키로 탐색가능하며, 포커스를 줄 수 있는 아이템이 포함된 <code>table</code>. 예를 들어, 이메일 메시지 리스트, 상호작용 가능한 그리드, 트리 그리드 등이 있다.</li>
+<li>사용자가 화살표 방향키로 탭을 선택 가능한 탭 리스트(<code>tab</code>, <code>tablist</code>). 키보드 탐색 모델을 꼭 구현해야 한다는 것을 명심해야 한다!</li>
+<li><code>dialog</code>와 <code>alertdialog</code>. 몇몇 스크린 리더기에서는 포커스가 이 두가지 위젯 내부의 컨트롤 영역으로 이동시 어플리케이션 모드로 전환이 된다. 동작이 제대로 되게 하려면, <code>dialog</code> 역할의 요소에 부여된 <code>aria-describedby</code> 속성값으로 대화창의 목적을 설명해주는 텍스트 요소의 <code>id</code>를 넣으면 된다. 그리고 대화창이 열릴 경우,  첫번째 상호작용 컨트롤 영역에 포커스를 설정하라.</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">role</span>=<span class="string">"dialog"</span> <span class="attr">aria-label</span>=<span class="string">"login"</span> <span class="attr">aria-describedby</span>=<span class="string">"log1"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"log1"</span> <span class="attr">tabindex</span>=<span class="string">"-1"</span>&gt;</span>로그인하려면 유저 이름과 비밀번호를 입력하세요.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">...</div><div class="line">...</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><code>toolbar</code>, <code>toolbar buttons</code>, <code>menu</code>, <code>menu items</code> 혹은 이와 비슷한 위젯들.</li>
+</ul>
+<p><code>role=application</code>은 제공하고자 하는 위젯이 오직 포커스를 받을 수 있는 상호작용 가능한 컨트롤들로 이루어졌을 <em>때만</em> 사용해야 하며, 이러한 위젯들은 대부분 실제 데스크톱 어플리케이션을 따라한 것들이다. 참고해야 할 점은, 많은 위젯이 웹 애플리케이션이라고 여겨지지만 이러한 위젯의 콘텐츠 대부분은 문서 정보를 토대로 한다는 것이다. 이러한 위젯들에는 페이스북 포스트나 댓글, 트위터 피드 혹은 심지어 정보를 동적으로 보여주는 아코디언 메뉴와 같은 것들이 있다. 겉보기에 데스크톱 애플리케이션과 별반 차이가 없어보이더라도, 우리가 주로 다루는 것은 웹 문서다.</p>
+<p><code>role=application</code>을 사용할 시, 사용자가 스크린 리더기기를 폼 (포커스) 모드로 놓더라도 특정한 동작용의 키보드 단축키를 제공하는 것은 의무사항이 아니다. 일례로 <code>role=listbox</code> 역할을 부여받은 커스텀 컨트롤은 사용자가 그 컨트롤을 사용하는 동안에 누른 키가 어떤 것이든 방향키를 포함하여 모두 감지할 수 있다.</p>
+<ul>
+<li>요약: 실제로 <code>role=application</code>을 사용하는 경우는 <strong>매우 드물 것이다!</strong></li>
+</ul>
+<h3 id="그렇다면-아주-아주-만약에-role-application을-써야-하는-경우라면-어디다가-써야-하나"><a href="#그렇다면-아주-아주-만약에-role-application을-써야-하는-경우라면-어디다가-써야-하나" class="headerlink" title="그렇다면 아주 아주 만약에 role=application을 써야 하는 경우라면 어디다가 써야 하나?"></a>그렇다면 아주 아주 만약에 <code>role=application</code>을 써야 하는 경우라면 어디다가 써야 하나?</h3><p>적용하고자 하는 위젯과 가장 가까운 컨테이너 요소에 적용한다. 예를 들어, 위젯의 부모 <code>div</code> 요소는 위젯 바깥에 존재하면서도 가장 가까운 요소이다. 만약 바깥쪽 <code>div</code>가 애플리케이션 상호작용 모델을 제공해야 하는 위젯만을 포함하고 있다면, 사용자의 탭키가 위젯을 지나쳤을 시 포커스 모드가 꺼지도록 해야 한다.</p>
+<p>만일 페이지가 오로지 포커스 모드가 켜져야 하는 하나 혹은 그 이상의 위젯으로만 이루어졌다면 <code>body</code>요소에 역할을 부여한다. 만약 이러한 위젯들이 대부분이지만 다른 것들도 브라우저 상에서 보여져야 한다면, <code>role=document</code>를 페이지의 문서 비스무리한(document-ish) 부분의 가장 바깥의 요소에 적용한다. 이 역할은 <code>role=application</code>에 상대적인 역할이며, 스크린 리더로 하여금 이 역할이 적용된 부분에서는 브라우징 모드를 사용하게 만든다. 또한 이 요소에 <code>tabindex=0</code>을 적용하여 사용자가 탭키로 접근이 가능하게끔 만든다.</p>
+<ul>
+<li>요약: 만약 페이지의 90~95%가 위젯으로 이루어져 있다면 <code>role=application</code>을 사용하기에 <em>적절할 수도 있다.</em> 그렇더라도, <code>role=application</code>을 적용했을 때와 하지 않았을 때의 모델 중 어느 것이 더 적절하게 작동하는지 두 가지 버전을 실제로 테스트할 수 있는 지식을 가진 누군가의 도움을 받아봐야 한다.</li>
+</ul>
+<p>만약 페이지의 대부분이 고전적인 위젯으로 이루어져 있거나 사용자가 포커스 모드로 상호작용해야 할 필요가 없는 링크와 같은 페이지 요소들로 이루어져 있다면, <code>role=application</code>을 <code>body</code>와 같이 상위 컨테이닝 요소에 <strong>절대로</strong> 적용하지 말아야 한다. 사이트 혹은 애플리케이션 사용자의 보조 기기가 엄청나게 혼란스러워 할 것이다.</p>
+<p><code>role=application</code>의 용법에 대해 더 알아보고 싶다면, <a href="http://www.marcozehe.de/2012/02/06/if-you-use-the-wai-aria-role-application-please-do-so-wisely/" target="_blank" rel="external">만약 WAI-ARIA 역할 “application”을 사용하고 싶다면, 부디 현명하게 사용해주세요!</a>를 참조하십시오.</p>
+<h2 id="사용자-설정-관련-접근성-개발-항목-체크리스트"><a href="#사용자-설정-관련-접근성-개발-항목-체크리스트" class="headerlink" title="사용자 설정 관련 접근성 개발 항목 체크리스트"></a>사용자 설정 관련 접근성 개발 항목 체크리스트</h2><p>사용자 정의 컨트롤 개발시에 다음의 디자인 고려 사항 리스트를 확인해보자. 만일 질문에 대한 답이 전부 ‘아니오’라면 배포 전에 개발 내용을 수정하거나, 아니면 최소한 다른 개발자에게 당신이 만든 사용자 정의 컨트롤의 접근성이 제한적이기 때문에 몇몇 사용자들의 사용이 불가능할 수 있다는 문제점을 문서로 남기자.</p>
+<p><em>사용자정의 컨트롤 디자인 고려사항</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">디자인 고려사항</th>
+<th>설명</th>
+<th>예/아니오</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">포커스 가능성</td>
+<td>키보드로 포커스 조작이 가능한가? ‘키보드 포커스 제공하기’  참조</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">키보드 조작 가능성</td>
+<td>키보드로 조작이 가능한가?  ‘키보드 탐색’  참조</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">터치 가능성</td>
+<td>터치 제스쳐로 조작이 가능한가?  보조 기기를 사용가능한가?</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">예상 동작</td>
+<td>표준 키 (‘ARIA 위젯 디자인 패턴’  참조)를 사용하여 조작이 가능한가?  그리고/혹은 터치로 조작이 가능한가?</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">명료한 포커스 알림</td>
+<td>어떤 컨트롤이 포커스를 받고 있는지 쉽게 알아볼 수 있는가?  ‘볼 수 있는 포커스’  참조</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">레이블</td>
+<td>컨트롤이 접근성 API에 따른 접근 가능한 이름을 가진 텍스트 레이블을 가지고 있다</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">역할</td>
+<td>컨트롤이 접근성 API에 따른 적합한 역할을 가지고 있다</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">상태 및 프로퍼티</td>
+<td>컨트롤이 접근성 API에 따른 UI 상태나 프로퍼티를 가지고 있다</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">색상 대비</td>
+<td>저시력자가,컨트롤 레이블/설명/아이콘을 인식 할 수 있다/사용할 수 있다 (색상 대비 검사기를 사용한다)</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">고대비 모드</td>
+<td>고대비 모드로 설정되었을 때 컨트롤을 인식 할 수 있다/사용할 수 있다  (예:  윈도우 HC 모드)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ARIA를-쓴다고-해서-대부분의-HTML-요소가-가지는-기본적인-의미가-바뀌지는-않는다"><a href="#ARIA를-쓴다고-해서-대부분의-HTML-요소가-가지는-기본적인-의미가-바뀌지는-않는다" class="headerlink" title="ARIA를 쓴다고 해서 대부분의 HTML 요소가 가지는 기본적인 의미가 바뀌지는 않는다."></a>ARIA를 쓴다고 해서 대부분의 HTML 요소가 가지는 기본적인 의미가 바뀌지는 않는다.</h2><ul>
+<li>참고: 어떨때는 HTML 요소의 의미가 ARIA 역할, 상태 혹은 프로퍼티로 표시된다. 요소의 <a href="http://rawgit.com/w3c/aria/master/aria/aria.html#implicit_semantics" target="_blank" rel="external">기본 내장 ARIA 의미</a>라고 알려져 있다.</li>
+</ul>
+<p>HTML4에서 정의된 요소들은 모두 기본으로 가지고 있는 의미 노출을 위해 ARIA 역할을 따로 추가할 필요가 없다. ARIA 역할을 추가하는 것은 아무 이득 없는 잔업에 불과하며 유지보수시 문제를 일으킬 수도 있다. HTML5에서 새롭게 정의된 요소들은 대부분의 브라우저에서 노출되는 기본적인 의미를 가지고 있다. <a href="https://www.w3.org/TR/html5/dom.html#aria-usage-note" target="_blank" rel="external">HTML 요구명세서</a>에는 다음과 같은 설명이 있다.</p>
+<blockquote>
+<p>대부분의 경우, [기본 내장 ARIA 의미]와 같은 뜻을 가진 ARIA 역할 및 aria-* 속성을 부여하는 것은 불필요하며 브라우저에 의한 기본값들이 있기 때문에 추천할 만한 행동도 아니다.</p>
+</blockquote>
+<h3 id="몇가지-ARIA-중복-사용-예"><a href="#몇가지-ARIA-중복-사용-예" class="headerlink" title="몇가지 ARIA 중복 사용 예"></a>몇가지 ARIA 중복 사용 예</h3><p>HTML5 권고안에 명시되어 있는 <a href="https://www.w3.org/TR/html5/dom.html#interactive-content" target="_blank" rel="external">인터렉티브 요소</a>에 추가적으로 의미를 부여하는 것은 시간 낭비다.</p>
+<p>(X) <code>&lt;button role=&quot;button&quot;&gt;press me&lt;/button&gt;</code><br>(O) <code>&lt;button&gt;press me&lt;/button&gt;</code></p>
+<p>HTML 속성과 뜻하는 바가 같은 ARIA 상태나 프로퍼티 속성을 추가하는 일은 시간 낭비다.</p>
+<p>(X) <code>&lt;input type=&quot;text&quot; required aria-required=&quot;true&quot;&gt;</code>, <code>&lt;div hidden aria-hidden=&quot;true&quot;&gt;</code><br>(O) <code>&lt;input type=&quot;text&quot; required&gt;</code>, <code>&lt;div hidden&gt;</code></p>
+<p>이미 예전에 구현된(long-implemented) 구조적인 요소에 ARIA 역할, 상태, 프로퍼티 속성을 추가하는 일은 시간 낭비다.</p>
+<p>(X) <code>&lt;h1 role=&quot;heading&quot; aria-level=&quot;1&quot;&gt;heading text&lt;/h1&gt;</code><br>(O) <code>&lt;h1&gt;heading text&lt;/h1&gt;</code></p>
+<h2 id="HTML에서-사용-불가능한-ARIA-역할과-속성들"><a href="#HTML에서-사용-불가능한-ARIA-역할과-속성들" class="headerlink" title="HTML에서 사용 불가능한 ARIA 역할과 속성들"></a>HTML에서 사용 불가능한 ARIA 역할과 속성들</h2><p>다음 목록에 나열된 ARIA 역할과 속성은 네이티브 HTML로 구현이 되지 않은 것들이다. 많은 ARIA의 역할이나 속성들은 사용자에게는 정보를 전달하지만 HTML에서는 사용 불가능하다.</p>
+<h3 id="ARIA-역할"><a href="#ARIA-역할" class="headerlink" title="ARIA 역할"></a>ARIA 역할</h3><ol>
+<li>alert</li>
+<li>alertdialog</li>
+<li>gridcell</li>
+<li>log</li>
+<li>marquee</li>
+<li>menuitemcheckbox</li>
+<li>menuitemradio</li>
+<li>scrollbar</li>
+<li>status</li>
+<li>tab</li>
+<li>tabpanel</li>
+<li>timer</li>
+<li>tooltip</li>
+<li>treeitem</li>
+<li>grid</li>
+<li>menu</li>
+<li>menubar</li>
+<li>tablist</li>
+<li>toolbar</li>
+<li>tree</li>
+<li>treegrid</li>
+<li>directory</li>
+<li>document</li>
+<li>group</li>
+<li>note</li>
+<li>presentation</li>
+<li>region</li>
+<li>application</li>
+<li>search</li>
+</ol>
+<h3 id="ARIA-상태-및-프로퍼티-aria-속성"><a href="#ARIA-상태-및-프로퍼티-aria-속성" class="headerlink" title="ARIA 상태 및 프로퍼티 (aria-* 속성)"></a>ARIA 상태 및 프로퍼티 (<code>aria-*</code> 속성)</h3><ol>
+<li>aria-activedescendant</li>
+<li>aria-atomic</li>
+<li>aria-busy (state)</li>
+<li>aria-controls</li>
+<li>aria-describedby</li>
+<li>aria-dropeffect</li>
+<li>aria-expanded (state)</li>
+<li>aria-flowto</li>
+<li>aria-grabbed (state)</li>
+<li>aria-haspopup</li>
+<li>aria-hidden (state)</li>
+<li>aria-label</li>
+<li>aria-labelledby</li>
+<li>aria-level</li>
+<li>aria-live</li>
+<li>aria-orientation</li>
+<li>aria-owns</li>
+<li>aria-posinset</li>
+<li>aria-pressed (state)</li>
+<li>aria-relevant</li>
+<li>aria-setsize</li>
+<li>aria-sort</li>
+</ol>
+<h2 id="ARIA-디자인-패턴-및-터치-기기-지원"><a href="#ARIA-디자인-패턴-및-터치-기기-지원" class="headerlink" title="ARIA 디자인 패턴 및 터치 기기 지원"></a>ARIA 디자인 패턴 및 터치 기기 지원</h2><h3 id="경고"><a href="#경고" class="headerlink" title="경고!"></a>경고!</h3><p><a href="http://rawgit.com/w3c/aria/master/practices/aria-practices.html#aria_ex" target="_blank" rel="external">ARIA 디자인 패턴</a>은 커스텀 UI 요소 구현 방법에 대해 설명하는 문서이므로 키보드만을 사용하는 사용자에게 쓸모가 있으며 보조 기기 사용자들은 이해만 가능하다. 몇몇 ARIA 디자인 패턴은 현재 키보드에 특화된 이벤트 핸들링에 의존한다. 이러한 것들은 터치 스크린만을 제공하는 기기에서는 지원이 불가능하며 핸드폰/태블릿을 키보드와 같이 사용한다 하더라도 (운영체제에 따라) 이용이 제한되거나 지원이 불가능하다. <a href="https://docs.google.com/spreadsheets/d/1gN9oRZPdrJxLDNtT6nVO4fn7E7sn1061L9Xl3__slZ4/edit?usp=sharing" target="_blank" rel="external">ARIA 디자인 패턴 - 터치 UA/AT 차이 분석 (구글 문서)</a>은 현재 집필 중이며, 열람이 가능하다.</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Young Bae</h4>
+    <p>A UI developer who loves to read anything that is written in English or Korean.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/10/14/WAI-ARIA 적용시 주의할 점/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://gratiaa.github.io/young-blog/young-blog/2016/10/14/WAI-ARIA 적용시 주의할 점/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/10/14/WAI-ARIA 적용시 주의할 점/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/young-blog/2016/10/16/Notes-on-Using-ARIA-in-HTML/">
+        ← Notes on Using ARIA in HTML
+    </a>
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/young-blog/2016/10/09/govuk-styleguide-html/">
+        GOV.UK 스타일가이드 (HTML) →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/young-blog/">Young Blog</a> &copy; 2016 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/young-blog/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/young-blog/js/index.js"></script>
+
+
+
+
+
+
+</body>
+</html>
