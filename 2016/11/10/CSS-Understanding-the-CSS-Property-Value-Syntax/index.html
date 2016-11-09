@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>CSS 속성값 구문에 대해 알아보자 | Young Blog</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/young-blog/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Young Blog">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff7a7c+0,ffd53f+100 */
+background: #ff7a7c; /* Old browsers */
+background: -moz-linear-gradient(45deg,  #ff7a7c 0%, #ffd53f 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg,  #ff7a7c 0%,#ffd53f 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg,  #ff7a7c 0%,#ffd53f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7a7c', endColorstr='#ffd53f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/young-blog/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Young Blog</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-11-09T16:05:14.000Z" itemprop="datePublished">
+          2016-11-10
+      </time>
+    
+    
+    | 
+    <a href='/young-blog/tags/CSS/'>CSS</a>
+    
+    
+</span>
+    <h1 class="post-title">CSS 속성값 구문에 대해 알아보자</h1>
+    <section class="post-content">
+      <p><a href="https://www.smashingmagazine.com/2016/05/understanding-the-css-property-value-syntax/" target="_blank" rel="external">원문: <em>Understanding the CSS Property Value Syntax</em> by Russ Weakley, 2016년 5월 16일</a></p>
+<p>W3C는 전용 구문을 사용해서 각 CSS 속성에서 사용할 수 있는 값을 정의합니다. 공식 CSS 스펙 문서를 직접 훑어 본 적이 있다면, 이 구문이 나오는 것을 봤을 겁니다. 여기 <a href="https://www.w3.org/TR/css3-border/#the-border-image-slice" target="_blank" rel="external"><code>border-image-slice</code> 스펙</a>에 나온 것 처럼요. 한번 봐볼까요?</p>
+<p><code>&lt;&#39;border-­image-­slice&#39;&gt; = [&lt;number&gt; | &lt;percentage&gt;]{1,4} &amp;&amp; fill?</code></p>
+<p>여기 나오는 기호들이 의미와 사용법을 모른다면 구문을 이해하기가 쉽지 않을 것입니다. 그렇지만, CSS 속성값 구문 읽는 법은 한번 시간을 들여서 배워둘 만한 가치가 있습니다. W3C에서 사용하는 속성 정의 방법을 알아두면 후에 <a href="https://www.w3.org/Style/CSS/specs.en.html" target="_blank" rel="external">어떤 CSS 스펙</a>이라도 이해하는 데 문제가 없을 겁니다.</p>
+<p><img src="https://www.smashingmagazine.com/wp-content/uploads/2016/05/understanding-syntax-image-opt.jpg" alt=""></p>
+<h2 id="베커스-나우르-표기법-Backus-Naur-Form-BNF"><a href="#베커스-나우르-표기법-Backus-Naur-Form-BNF" class="headerlink" title="베커스-나우르 표기법(Backus-Naur Form, BNF)"></a>베커스-나우르 표기법(Backus-Naur Form, BNF)</h2><p>맨 먼저 BNF에 대해 알아보면서 시작하겠습니다. BNF에 대한 사전 지식을 갖춰놓으면 W3C의 속성값 구문 이해가 쉬워지기 때문이죠.</p>
+<p><a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form" target="_blank" rel="external">BNF</a>는 컴퓨터 언어의 문법을 설명하기 위해 만들어진 공식 표기법입니다. BNF의 특징은 모호함이 없도록 설계되었다는 것인데, 이는 컴퓨터 언어를 사용할 때 의미의 모호함이나 소통의 불일치성을 없애기 위해서 입니다.</p>
+<p>원본 BNF에서 파생된 확장 언어들도 이미 많이 사용되고 있는데, 그 예로 <a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form" target="_blank" rel="external">확장(Extended) BNF</a>, <a href="https://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form" target="_blank" rel="external">증강(Augmented) BNF</a> 등이 있습니다.</p>
+<p>BNF 명세서를 보면 다음과 같은 형식으로 규칙을 서술합니다.</p>
+<p><code>&lt;symbol&gt; ::= __expression__</code></p>
+<p>왼쪽에는 항상 비말단(non-terminal) 기호가 자리잡고 있습니다. 그 옆에는 <code>::=</code> 기호가 있는데, “다음에 오는 것으로 대체 될 수 있다”라는 뜻입니다. 오른쪽에는 <code>__expression__</code>이 있는데, 하나 이상의 기호로 이루어져 있으며 왼쪽 항에 오는 <code>&lt;symbol&gt;</code>의 의미를 나타냅니다.</p>
+<p>BNF 명세서에 따르면, 이 구문이 뜻하는 바는 “왼쪽 항에 있는 뭐시기는 오른쪽에 있는 거시기로 대체될 수 있다”라는 뜻입니다.</p>
+<h2 id="비말단-Non-terminal-기호와-말단-Terminal-기호"><a href="#비말단-Non-terminal-기호와-말단-Terminal-기호" class="headerlink" title="비말단(Non-terminal) 기호와 말단(Terminal) 기호"></a>비말단(Non-terminal) 기호와 말단(Terminal) 기호</h2><p>비말단 기호는 좀 더 하위 요소로 쪼개질 수 있거나 대체될 수 있는 기호를 말합니다. BNF에서 비말단 기호는 홑화살괄호인 <code>&lt;</code>과 <code>&gt;</code> 사이에 씁니다. 아래 예시에서 <code>&lt;integer&gt;</code>와 <code>&lt;digit&gt;</code>는 비말단 기호입니다.</p>
+<p><code>&lt;integer&gt; ::= &lt;digit&gt; | &lt;digit&gt;&lt;integer&gt;</code></p>
+<p>말단 기호는 값이 더 이상 하위 요소로 분해되거나 대체될 수 없음을 나타냅니다. 아래 예시에 나오는 0과 9 사이 숫자값들은 모두 말단 기호입니다.</p>
+<p><code>&lt;digit&gt; ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9</code></p>
+<h2 id="CSS-속성값-문법"><a href="#CSS-속성값-문법" class="headerlink" title="CSS 속성값 문법"></a>CSS 속성값 문법</h2><p>W3C에서 사용하는 CSS 속성값 구문이 BNF의 개념에서 비롯한 것이기는 하나, 몇가지 차이점이 있습니다. 일단 공통점으로는 두 구문 모두 비말단 기호로 시작합니다. 그렇지만 BNF와는 다르게 CSS에서는 표현식 안의 기호를 <strong>“구성값(component value)”</strong>이라고 부릅니다.</p>
+<p>아래 예시에서, <code>&lt;line-width&gt;</code>는 비말단 기호이며, <code>&lt;length&gt;</code>, <code>thin</code>, <code>medium</code>, <code>thick</code>는 구성값입니다.</p>
+<p><code>&lt;line-­width&gt; = &lt;length&gt; | thin | medium | thick</code></p>
+<h2 id="구성값"><a href="#구성값" class="headerlink" title="구성값"></a>구성값</h2><p>구성값의 종류는 키워드, 기본 데이터 타입, 속성 데이터 타입, 비속성 데이터 타입 이렇게 네가지가 있습니다.</p>
+<h3 id="키워드-값"><a href="#키워드-값" class="headerlink" title="키워드 값"></a>키워드 값</h3><p>키워드 값은 따옴표나 화살괄호 없이 씁니다. CSS에서 쓰던 속성값을 있는 그대로 쓰는 것입니다. 이 값들은 더 이상 쪼개지거나 다른 값으로 대체될 수 없기 때문에 말단 기호로 취급됩니다. 아래 예시에서 <code>thin</code>, <code>medium</code>, <code>thick</code>은 전부 키워드 값입니다.</p>
+<p><code>&lt;line-­width&gt; = &lt;length&gt; | thin | medium | thick</code></p>
+<h3 id="기본-데이터-타입값"><a href="#기본-데이터-타입값" class="headerlink" title="기본 데이터 타입값"></a>기본 데이터 타입값</h3><p>기본 데이터 타입은 <code>&lt;length&gt;</code>와 <code>&lt;color&gt;</code>같이 중요한 값을 정의합니다. 실제 길이 단위 혹은 색상값으로 대체될 수 있으므로 비말단 기호입니다. 아래 예시에서는 <code>&lt;color&gt;</code>가 기본 데이터 타입값입니다.</p>
+<p><code>&lt;&#39;background-color&#39;&gt; = &lt;color&gt;</code></p>
+<p>이 <code>&lt;color&gt;</code>값은 CSS에서 실제 색상값, 키워드, 확장 키워드, RGB / RGBA / HSL / HSLA 값, 혹은 <code>transparent</code> 키워드로로 대체될 수 있습니다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">background-color</span>: red; &#125;</div><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">background-color</span>: honeydew; &#125;</div><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(50%,50%,50%); &#125;</div><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(100%,100%,100%,.5); &#125;</div><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">background-color</span>: <span class="built_in">hsl</span>(280,100%,50%); &#125;</div><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">background-color</span>: <span class="built_in">hsla</span>(280,100%,50%,0.5); &#125;</div><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">background-color</span>: transparent; &#125;</div></pre></td></tr></table></figure>
+<h3 id="속성-데이터-타입값"><a href="#속성-데이터-타입값" class="headerlink" title="속성 데이터 타입값"></a>속성 데이터 타입값</h3><p>속성 데이터 타입값은 속성의 실제 이름을 정의하는 비말단 기호입니다. 홑화살괄호 사이에 인용 부호와 함께 속성 이름을 써서 나타냅니다. (<code>&lt;</code>…<code>&gt;</code>) 아래 예시에서, <code>&lt;&#39;border-width&#39;&gt;</code>기호는 속성 데이터 타입값입니다.</p>
+<p><code>&lt;&#39;border-­width&#39;&gt; = &lt;line-­width&gt;{1,4}</code></p>
+<p>속성 데이터 타입값을 그대로 CSS에서 프로퍼티로 사용할 수도 있습니다. 아래 예시에서는 <code>.example</code> 클래스 내에서 <code>border-width</code> 속성값이 2 픽셀 두께의 테두리를 정의하는 데 쓰였습니다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">border-width</span>: <span class="number">2px</span>; &#125;</div></pre></td></tr></table></figure>
+<h3 id="비속성-데이터-타입값"><a href="#비속성-데이터-타입값" class="headerlink" title="비속성 데이터 타입값"></a>비속성 데이터 타입값</h3><p>비속성 데이터 값은 자신의 이름을 속성으로 사용하는 것을 허용하지 않는 비말단 기호입니다. 그러나 이 값은 다른 CSS 속성의 상태를 정의하기 위해 사용됩니다. 예를 들어 <code>&lt;line-width&gt;</code>는 그 자체로는 CSS 속성이 아니지만, 다양한 <code>&lt;border&gt;</code> 속성을 정의하기 위해 사용되는 데이터 타입입니다.</p>
+<p><code>&lt;line-­width&gt;  =  &lt;length&gt; | thin | medium | thick</code><br><code>&lt;&#39;border-­width&#39;&gt;  =  &lt;line-­width&gt;{1,4}</code></p>
+<h2 id="구성값-조합자-Combinator"><a href="#구성값-조합자-Combinator" class="headerlink" title="구성값 조합자(Combinator)"></a>구성값 조합자(Combinator)</h2><p>구성값 사이에 다음과 같은 5개의 조합자를 넣어 새로운 속성값을 표현할 수 있습니다.</p>
+<h3 id="인접-값"><a href="#인접-값" class="headerlink" title="인접 값"></a>인접 값</h3><p>만약 일련의 구성값이 쭉 나열되어 있으면, CSS에서 속성을 사용하고자 할 때 나열된 순서대로 구성값을 전부 써야 합니다. 아래의 예시를 보면, 각기 다른 3가지 값(<code>value1</code>, <code>value2</code>, <code>value3</code>)이 나열되어 있습니다. CSS 작성 시, 해당 속성 선언문이 유효하려면 나열된 순서대로 속성값을 작성해야 합니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/* 속성값 구성 방법: 나열된 순서대로 모두 써야합니다. */</div><div class="line">&lt;'property'&gt; = value1 value2 value3</div><div class="line"></div><div class="line">/* Example */</div><div class="line">.example &#123; property: value1 value2 value3; &#125;</div></pre></td></tr></table></figure>
+<h3 id="더블-앰퍼샌드-amp-amp"><a href="#더블-앰퍼샌드-amp-amp" class="headerlink" title="더블 앰퍼샌드(&amp;&amp;)"></a>더블 앰퍼샌드(<code>&amp;&amp;</code>)</h3><p>2개 이상의 값 사이에 앰퍼샌드 기호를 2개 연속해서 쓰면 (<code>&amp;&amp;</code>) 이 값들은 반드시 나타나야 하나 등장 순서는 어떤 것이 먼저 오더라도 상관 없다는 뜻입니다. 아래 예시를 보면, 2개의 값이 나열되어 있는데 사이에 더블 앰퍼샌드 기호가 있습니다. CSS 작성 시, 이 두가지 값을 모두 써야하나 어떤 것을 먼저 쓰더라도 유효합니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/* 속성값 구성 방법: 모두 써야 하나 순서는 상관없습니다. */</div><div class="line">&lt;'property'&gt; = value1 &amp;&amp; value2</div><div class="line"></div><div class="line">/* Examples */</div><div class="line">.example &#123; property: value1 value2; &#125;</div><div class="line">.example &#123; property: value2 value1; &#125;</div></pre></td></tr></table></figure>
+<h3 id="싱글-파이프"><a href="#싱글-파이프" class="headerlink" title="싱글 파이프(|)"></a>싱글 파이프(<code>|</code>)</h3><p>싱글 파이프 기호 (<code>|</code>)를 2개 이상의 값 사이사이에 넣으면 이 기호로 연결된 값 중에 하나만 나타나야 한다는 뜻입니다. 아래 예시를 보면, 세 가지 값 사이사이에 싱글 파이프 기호가 자리잡고 있습니다. CSS 작성 시에 속성값으로 세 가지 옵션 중에 하나만 선택해야 합니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* 속성값 구성 방법: 이 중에 하나만 써야 합니다. */</div><div class="line">&lt;'property'&gt; = value1 | value2 | value3</div><div class="line"></div><div class="line">/* 예시 */</div><div class="line">.example &#123; property: value1; &#125;</div><div class="line">.example &#123; property: value2; &#125;</div><div class="line">.example &#123; property: value3; &#125;</div></pre></td></tr></table></figure>
+<h3 id="더블-파이프"><a href="#더블-파이프" class="headerlink" title="더블 파이프(||)"></a>더블 파이프(<code>||</code>)</h3><p>두개 이상의 값 사이에 더블 파이프(<code>||</code>)를 사용하면 이들 값 중 순서에 상관없이 하나 이상 써야 한다는 뜻입니다. 아래 예시를 보면, 세개의 값 사이에 더블 파이프가 들어가 있습니다. 이 구문에 따라서 CSS 선언을 작성하면 다양한 조합이 가능합니다. 값을 하나만 쓸수도 있고, 두개 혹은 세개 모두 사용 가능하며 순서도 아무렇게나 써도 됩니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/* 속성값 구성 방법: 하나 이상의 값을 순서에 상관없이 씁니다. */</div><div class="line">&lt;'property'&gt; = value1 || value2 || value3</div><div class="line"></div><div class="line">/* Examples */</div><div class="line">.example &#123; property: value1; &#125;</div><div class="line">.example &#123; property: value2; &#125;</div><div class="line">.example &#123; property: value3; &#125;</div><div class="line">.example &#123; property: value1 value2; &#125;</div><div class="line">.example &#123; property: value1 value2 value3; &#125;</div><div class="line">...etc</div></pre></td></tr></table></figure>
+<h3 id="대괄호"><a href="#대괄호" class="headerlink" title="대괄호([])"></a>대괄호(<code>[]</code>)</h3><p>대괄호(<code>[]</code>) 기호로 하나 이상의 속성값을 감쌀 수 있는데, 이는 이 괄호로 감싸진 값들이 하나의 그룹으로 묶였다는 뜻입니다. 아래의 예시 구문에는 세개의 값이 나열되어 있는데, 처음 두개 값만 대괄호로 감싸져 있으므로 이들은 하나의 그룹으로 묶인 것입니다. 이 구문을 따르면 유효한 해당 속성 CSS 선언문은 두가지가 나옵니다. 하나는 <code>value1</code>과 <code>value3</code>을 같이 쓰는 것이고, 다른 하나는 <code>value2</code>와 <code>value3</code>을 같이 쓰는 것입니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/* 속성값 구성 방법: 특정 값들을 하나의 그룹으로 묶기 */</div><div class="line">&lt;'property'&gt; = [ value1 | value2 ] value3</div><div class="line"></div><div class="line">/* 예시 */</div><div class="line">.example &#123; property: value1 value3; &#125;</div><div class="line">.example &#123; property: value2 value3; &#125;</div></pre></td></tr></table></figure>
+<h2 id="구성값-복합자-Multiplier"><a href="#구성값-복합자-Multiplier" class="headerlink" title="구성값 복합자(Multiplier)"></a>구성값 복합자(Multiplier)</h2><p>다음과 같은 8가지 복합자를 사용하여 속성값을 여러 번 반복하여 사용할 수 있습니다.</p>
+<h3 id="기호"><a href="#기호" class="headerlink" title="? 기호"></a><code>?</code> 기호</h3><p>물음표 기호(<code>?</code>)는 자신의 앞에 오는 값이 옵션값임을 나타내며, 앞에 오는 값의 종류로는 타입이나 단어, 혹은 그룹이 있습니다. 이 기호가 뒤에 붙은 값은 CSS 선언문에서 아예 쓰지 않거나, 한 번만 쓸 수 있습니다. 아래 예시를 보면 두번째 값이 대괄호 안에 쉼표와 함께 묶여져 있습니다. 대괄호 그룹 다음에 물음표가 붙었으므로 <code>value1</code>은 무조건 써야 하며, <code>value2</code>는 써도 되고 안 써도 됩니다. 단 두 값을 같이 쓰려면 사이에 쉼표를 넣어줘야 합니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/* 구성값 복합자: value2는 쓰지 않거나 1번만 써주기 */</div><div class="line">&lt;'property'&gt; = value1 [, value2 ]?</div><div class="line"></div><div class="line">/* 예시 */</div><div class="line">.example &#123; property: value1; &#125;</div><div class="line">.example &#123; property: value1, value2; &#125;</div></pre></td></tr></table></figure>
+<h3 id="기호-1"><a href="#기호-1" class="headerlink" title="* 기호"></a><code>*</code> 기호</h3><p>별표(<code>*</code>) 기호는 그 앞에 오는 값인 타입이나 단어, 그룹을 CSS 선언문에서 아예 안쓰거나, 1번 이상 써도 된다는 것을 상징합니다. 아래 예시를 보면 두번째 값은 앞에 쉼표가 붙은 채로 대괄호로 묶여 있습니다. 이 그룹 뒤에 별표가 붙어있으므로, <code>value1</code>은 무조건 써야 하며, <code>value2</code>는 몇번이고 반복해서 쓸 수 있으나 쉼표를 먼저 써줌으로써 앞의 값과 구분해야 합니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 구성값 복합자: value2는 쓰지 않거나, 원하는 만큼 반복가능 */</div><div class="line">&lt;'property'&gt; = value1 [, &lt;value2&gt; ]*</div><div class="line"></div><div class="line">/* Examples */</div><div class="line">.example &#123; property: value1; &#125;</div><div class="line">.example &#123; property: value1, &lt;value2&gt;; &#125;</div><div class="line">.example &#123; property: value1, &lt;value2&gt;, &lt;value2&gt;; &#125;</div><div class="line">.example &#123; property: value1, &lt;value2&gt;, &lt;value2&gt;, &lt;value2&gt;; &#125;</div><div class="line">...</div></pre></td></tr></table></figure>
+<h3 id="기호-2"><a href="#기호-2" class="headerlink" title="+ 기호"></a><code>+</code> 기호</h3><p>덧셈(<code>+</code>) 기호는 앞에 오는 값인 타입이나 단어, 그룹을 CSS 선언문에서 한 번 이상 써야 함을 나타냅니다. 아래 예시를 보면, 값 뒤에 덧셈 기호가 붙어있으므로 해당 값을 한 번 이상 쓸 수 있습니다. 이 경우에는 값을 반복할 때, 그 앞에 쉼표를 붙일 필요가 없습니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/* 구성값 복합자: 값을 쉼표 없이 한번 이상 쓸 수 있습니다. */</div><div class="line">&lt;'property'&gt; = &lt;value&gt;+</div><div class="line"></div><div class="line">/* Examples */</div><div class="line">.example &#123; property: &lt;value&gt;; &#125;</div><div class="line">.example &#123; property: &lt;value&gt; &lt;value&gt;; &#125;</div><div class="line">.example &#123; property: &lt;value&gt; &lt;value&gt; &lt;value&gt;; &#125;</div><div class="line">...</div></pre></td></tr></table></figure>
+<h3 id="A-기호"><a href="#A-기호" class="headerlink" title="{A} 기호"></a><code>{A}</code> 기호</h3><p>타입이나 단어, 그룹 다음에 숫자값을 넣은 중괄호(<code>{A}</code>)가 붙으면 해당 값이 A번 반복됨을 뜻합니다. 아래 예시에 따라 작성한 선언문이 유효하려면 값을 2번 연달아 써야 합니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/* 구성값 복합자: A번 반복됩니다. */</div><div class="line">&lt;'property'&gt; = &lt;value&gt;&#123;2&#125;</div><div class="line"></div><div class="line">/* 예시 */</div><div class="line">.example &#123; property: &lt;value&gt; &lt;value&gt;; &#125;</div></pre></td></tr></table></figure>
+<h3 id="A-B-기호"><a href="#A-B-기호" class="headerlink" title="{A, B} 기호"></a><code>{A, B}</code> 기호</h3><p>타입이나 단어, 그룹 뒤에 쉼표로 구분된 두개의 숫자값을 넣은 중괄호 묶음(<code>{A,B}</code>)이 붙으면 해당 값이 최소 A번에서 최대 B번 나타남을 뜻합니다. 아래 예시에 따르면 선언문을 작성할 때 해당 값을 최소 1번에서 최대 3번까지 속성값으로 쓸 수 있습니다. 반복되는 값 사이에 쉼표는 넣지 않습니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* 구성값 복합자: 최소 A번, 최대 B번 반복 가능합니다. */</div><div class="line">&lt;'property'&gt; = &lt;value&gt;&#123;1,3&#125;</div><div class="line"></div><div class="line">/* 예시 */</div><div class="line">.example &#123; property: &lt;value&gt;; &#125;</div><div class="line">.example &#123; property: &lt;value&gt; &lt;value&gt;; &#125;</div><div class="line">.example &#123; property: &lt;value&gt; &lt;value&gt; &lt;value&gt;; &#125;</div></pre></td></tr></table></figure>
+<h3 id="A-기호-1"><a href="#A-기호-1" class="headerlink" title="{A, } 기호"></a><code>{A, }</code> 기호</h3><p><code>{A,B}</code>에서 <code>B</code>를 뺀 <code>{A,}</code>를 특정 값 뒤에 붙이면 이는 해당 값을 최소 A번 반복 할 수 있음을 뜻합니다. 이 경우 최대값은 없으므로 원하는 만큼 반복이 가능합니다. 다음 예시에 따르면 선언문 작성시 값을 한 번은 꼭 써야 하며, 한 번 쓰고 난 이후에는 뒤에 몇 번이고 추가적인 값을 반복해서 쓸 수 있습니다. 반복되는 값 사이에 쉼표는 넣지 않습니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/* 구성값 복합자: 값을 한번 이상 써야 하며, 몇번이고 반복 할 수 있습니다. */</div><div class="line">&lt;'property'&gt; = &lt;value&gt;&#123;1,&#125;</div><div class="line"></div><div class="line">/* 예시 */</div><div class="line">.example &#123; property: &lt;value&gt;; &#125;</div><div class="line">.example &#123; property: &lt;value&gt; &lt;value&gt;; &#125;</div><div class="line">.example &#123; property: &lt;value&gt; &lt;value&gt; &lt;value&gt;; &#125;</div><div class="line">...etc</div></pre></td></tr></table></figure>
+<h3 id="기호-3"><a href="#기호-3" class="headerlink" title="# 기호"></a><code>#</code> 기호</h3><p>타입이나 단어, 그룹 값 뒤에 해쉬(<code>#</code>) 기호를 붙이면 해당 값이 1번 이상 반복됨을 나타냅니다. 이 때는 쉼표로 반복되는 값을 구분해줍니다. 아래 예시를 보면 반복 값이 쉼표로 구분되어 있습니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/* 구성값 복합자: 한 번 이상 값을 반복합니다. 쉼표로 각 값을 구분합니다. */</div><div class="line">&lt;'property'&gt; = &lt;value&gt;#</div><div class="line"></div><div class="line">/* 예시 */</div><div class="line">.example &#123; property: &lt;value&gt;; &#125;</div><div class="line">.example &#123; property: &lt;value&gt;, &lt;value&gt;; &#125;</div><div class="line">.example &#123; property: &lt;value&gt;, &lt;value&gt;, &lt;value&gt;; &#125;</div><div class="line">...etc</div></pre></td></tr></table></figure>
+<h3 id="기호-4"><a href="#기호-4" class="headerlink" title="! 기호"></a><code>!</code> 기호</h3><p>느낌표(<code>!</code>)가 그룹값 다음에 붙으면 적어도 이 그룹에서 값이 하나 이상 나와야 합니다. 아래 예시를 보면 <code>value1</code>은 필수로 써야 하고, <code>value2</code>와 <code>value3</code>으로 이루어진 그룹에서 값이 하나 이상 나와야 합니다. <code>value1</code>과 <code>value2</code>를 같이 쓸 수도 있고, 아니면 <code>value3</code>을 <code>value2</code> 대신 쓸 수 있습니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/* 구성값 복합자: 그룹에서 적어도 값이 하나 이상 나와야 함을 뜻합니다. */</div><div class="line">&lt;'property'&gt; = value1 [ value2 | value3 ]!</div><div class="line"></div><div class="line">/* Examples */</div><div class="line">.example &#123; property: value1 value2; &#125;</div><div class="line">.example &#123; property: value1 value3; &#125;</div></pre></td></tr></table></figure>
+<h2 id="예제-lt-text-shadow-gt-구문"><a href="#예제-lt-text-shadow-gt-구문" class="headerlink" title="예제: &lt;text-shadow&gt; 구문"></a>예제: <code>&lt;text-shadow&gt;</code> 구문</h2><p>이제 예시로 <code>&lt;text-shadow&gt;</code> 속성 스펙 구문을 살펴보면서 배운 것을 적용해 봅시다. <a href="https://www.w3.org/TR/css-text-decor-3/#text-shadow-property" target="_blank" rel="external">스펙 문서</a>에는 다음과 같이 속성이 정의되어 있습니다.</p>
+<p><code>&lt;&#39;text-shadow&#39;&gt; = none | [ &lt;length&gt;{2,3} &amp;&amp; &lt;color&gt;? ]#</code></p>
+<p>여기에 나오는 다양한 기호들이 무엇을 뜻하고 있는지 한번 살펴봅시다.</p>
+<ul>
+<li><code>|</code>는 키워드값인 <code>none</code>과 그룹값 <code>[]</code> 중에 하나를 쓸 수 있다는 것을 뜻합니다.</li>
+<li>구성값 복합자인 <code>#</code>는 그룹 안에 담긴 값을 쉼표로 구분하여 하나 이상 쓸 수 있다는 것을 뜻합니다.</li>
+<li>그룹 안을 살펴보면, <code>{2,3}</code>은 길이 값을 2개에서 3개 쓸 수 있다는 것을 뜻합니다.</li>
+<li><code>&amp;&amp;</code>는 대괄호 그룹 안의 값들을 전부 써야 하나 나열 순서는 상관 없다는 것을 뜻합니다.</li>
+<li>여기서 끝나면 좋겠지만 까다롭게도 <code>&lt;color&gt;</code>값은 <code>?</code> 복합자와 함께 써져 있습니다. 이는 이 값을 쓰지 않거나 혹은 한 번만 써도 된다는 것을 뜻합니다.</li>
+</ul>
+<p>이제 이 구문을 일반적인 말로 풀어쓴다면 다음과 같습니다.</p>
+<blockquote>
+<p>속성값으로 키워드 <code>none</code>을 쓰거나, 길이값과 색상값의 조합문을 쓸 수 있다. 길이값은 두개나 세개 쓰는 것이 허용되며, 색상값은 써도 되고 안써도 되나 쓰고 싶은 경우에는 하나만 쓰도록 한다. 길이값과 색상값 둘 중 어떤 것을 먼저 써도 상관없다.</p>
+</blockquote>
+<p>이는 곧 <code>text-shadow</code> 속성값은 아주 다양하게 작성할 수 있다는 뜻입니다. 예를 들면, <code>text-shadow</code> 속성값으로 간단하게 <code>none</code>을 지정할 수 있습니다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">text-shadow</span>: none; &#125;</div></pre></td></tr></table></figure>
+<p>길이값 두개만 써도 되며 이 때 두 길이값은 그림자의 가로와 세로 오프셋 값으로 지정됩니다. 이 두개의 값만 쓴다면 그림자 흐림효과의 반경이나 색상값은 지정되지 않습니다.</p>
+<p>흐림효과 반경값이 없기 때문에 초기값으로 <code>0</code>이 사용됩니다. 따라서 그림자의 테두리가 또렷하게 나타납니다. 색상값도 없기 때문에 텍스트의 색상이 그림자의 색상으로 사용됩니다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">text-shadow</span>: <span class="number">10px</span> <span class="number">10px</span>; &#125;</div></pre></td></tr></table></figure>
+<p>길이값 세개를 쓴다면 가로 세로 오프셋에 흐림효과 반경값까지 설정이 됩니다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">text-shadow</span>: <span class="number">10px</span> <span class="number">10px</span> <span class="number">10px</span>; &#125;</div></pre></td></tr></table></figure>
+<p>여기에 색상값을 추가 할 수 있는데, 길이값의 앞에 와도 되고 뒤에 와도 됩니다. 아래 예시를 보면 빨간색 색상값이 길이값의 앞 혹은 뒤에 위치합니다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">text-shadow</span>: <span class="number">10px</span> <span class="number">10px</span> <span class="number">10px</span> red; &#125;</div><div class="line"><span class="selector-class">.example</span> &#123; <span class="attribute">text-shadow</span>: red <span class="number">10px</span> <span class="number">10px</span> <span class="number">10px</span>; &#125;</div></pre></td></tr></table></figure>
+<p>마지막으로, 이러한 그림자 값을 여러개 쓸 수 있는데 각 값은 콤마로 구분합니다. 그림자 효과는 앞의 값부터 적용이 됩니다. 첫번째 그림자가 맨 위의 레이어에 오고, 그 다음 값들은 그 뒤에 오는 레이어에 순차적으로 적용됩니다. 그림자는 텍스트 자체를 덮을 수 없습니다. 아래 예시 코드를 적용해보면 라임색 그림자 위에 붉은색 그림자가 얹혀집니다.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.example</span> &#123;</div><div class="line">    <span class="attribute">text-shadow</span>:</div><div class="line">        <span class="number">10px</span> <span class="number">10px</span> red,</div><div class="line">        -<span class="number">20px</span> -<span class="number">20px</span> <span class="number">5px</span> lime;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h2><p>만약 여러분이 하는 일이 CSS를 다루는 것이라면, 올바른 CSS 속성값 작성법을 익혀두는 것이 중요합니다. 어떤식으로 서로 다른 값들이 조합되거나 반복되는지 파악해 둔다면, CSS 속성값 구문을 훨씬 쉽게 이해할 수 있습니다. 그렇게 된다면 다양한 스펙 문서를 읽고 유효한 CSS를 작성하는 일이 한결 쉬워질 것 입니다.</p>
+<p>본 주제에 대해 더 알아보고 싶다면, 다음 웹사이트 목록을 참고하세요.</p>
+<ul>
+<li><a href="https://www.w3.org/TR/css3-values/#value-defs" target="_blank" rel="external">“값 정의 구문(Value Definition Syntax)”</a>, CSS 값 및 단위 모듈 (레벨3), W3C</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference" target="_blank" rel="external">“CSS 참고문서”</a>, MDN</li>
+<li><a href="http://alistapart.com/article/readspec" target="_blank" rel="external">“W3C 스펙 읽는 법”</a>, J. David Eisenberg, A List Apart</li>
+</ul>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Young Bae</h4>
+    <p>A UI developer who loves to read anything that is written in English or Korean.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/11/10/CSS-Understanding-the-CSS-Property-Value-Syntax/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://gratiaa.github.io/young-blog/young-blog/2016/11/10/CSS-Understanding-the-CSS-Property-Value-Syntax/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/11/10/CSS-Understanding-the-CSS-Property-Value-Syntax/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/young-blog/2016/11/09/aria-resources/">
+        WAI-ARIA 관련 자료 목록 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+        <div id="disqus_thread"></div>
+        <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//young-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/young-blog/">Young Blog</a> &copy; 2016 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/young-blog/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/young-blog/js/index.js"></script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'young-blog';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
