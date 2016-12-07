@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>상황에 따라 다르게 적용하는 CSS 방법론 | Young Blog</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="/young-blog/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Young Blog">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff7a7c+0,ffd53f+100 */
+background: #ff7a7c; /* Old browsers */
+background: -moz-linear-gradient(45deg,  #ff7a7c 0%, #ffd53f 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg,  #ff7a7c 0%,#ffd53f 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg,  #ff7a7c 0%,#ffd53f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7a7c', endColorstr='#ffd53f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/young-blog/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Young Blog</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2016-12-07T14:42:45.000Z" itemprop="datePublished">
+          2016-12-07
+      </time>
+    
+    
+    | 
+    <a href='/young-blog/tags/CSS/'>CSS</a>
+    
+    
+</span>
+    <h1 class="post-title">상황에 따라 다르게 적용하는 CSS 방법론</h1>
+    <section class="post-content">
+      <p><a href="http://simurai.com/blog/2016/11/27/css-methodologies" target="_blank" rel="external">원문: <em>When to use which CSS methodology</em> by simurai</a></p>
+<p>해가 지날수록 점점 더 많은 CSS 방법론이 등장하고 있습니다. 그러나 불행하게도 언제나 먹히는 CSS 방법론은 존재하지 않기 때문에, 이 글에서는 프로젝트의 성격에 따라 어떤 CSS 방법론이 적합한지에 대해 살펴보겠습니다.</p>
+<p>좋아요, 이제 그럼 CSS 방법론으로 가득 찬 캄캄한 동굴 속으로 들어가 봅시다.</p>
+<blockquote>
+<p>저는 그냥 <strong>단일 페이지 사이트</strong>나 <strong>간단한 사이트</strong>를 만들고 싶어요. 콘텐츠는 대부분 텍스트로 이루어져 있고, 폼 요소가 한두개 정도 들어가 있어요. 같이 개발할 사람은 없고, 그냥 저 혼자 (그리고 제 고양이랑) 만듭니다.</p>
+</blockquote>
+<p>👉 요소에 클래스를 부여하여 이를 선택자로 사용하는 대신, 그냥 HTML 요소를 선택자로 쓰세요. <a href="https://www.smashingmagazine.com/2016/11/css-inheritance-cascade-global-scope-new-old-worst-best-friends/" target="_blank" rel="external">그리고 케스케이드를 사용하여 상속이 일어나도록 하세요.</a> 사이트 규모가 커진다면 <a href="http://oocss.org/" target="_blank" rel="external">OOCSS</a>나 유틸리티 클래스(역: 자주 재사용하게 되는 보편적인 메소드를 모아놓은 클래스를 유틸리티 클래스라고 합니다)를 사용하는 것을 고려해 보세요.</p>
+<blockquote>
+<p>우리는 <strong>중간 규모의 팀</strong>입니다. 프로젝트가 좀 복잡해지고 있어요. 많은 사람들이 동시에 같은 프로젝트 내에서 개발하고 있습니다.</p>
+</blockquote>
+<p>👉 <a href="https://en.bem.info/methodology/quick-start/" target="_blank" rel="external">BEM</a>, <a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md" target="_blank" rel="external">SUIT</a>, <a href="https://smacss.com/" target="_blank" rel="external">SMACSS</a>, <a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/" target="_blank" rel="external">ITCSS</a>, <a href="http://ecss.io/" target="_blank" rel="external">Enduring CSS</a>와 같은 방법론 도입을 고려해보세요. 모두 다른 방법론이긴 하지만 어느 정도 겹치는 부분도 있고, 몇가지 공통점도 존재합니다. 이들 방법론에서 제시하는 명명 규칙(naming convention)을 따른다면 다른 사람이 작성한 CSS를 망칠 염려를 하지 않아도 됩니다. 이들 중에서 어떤 것을 채택할지는 팀원들과 상의를 해서 정하고, 최종적으로 하나를 선택하기 전에 먼저 후보를 추려낸 후 직접 써보세요.</p>
+<blockquote>
+<p>우리는 큰 회사에서 일하고, 팀의 성격도 다양합니다. 저희가 담당하고 있는 서비스는 <strong>규모가 크고, 복잡해요.</strong> 프로젝트 변경 사항을 따라가기가 벅찰 정도 입니다. 코드가 항상 유동적으로 변하고 있는데, 우리는 변경 사항이 엉뚱한 곳에 영향을 끼치는 것을 원하지 않아요.</p>
+</blockquote>
+<p>👉 <a href="https://facebook.github.io/react/docs/jsx-in-depth.html" target="_blank" rel="external">JSX</a>, <a href="https://github.com/cssinjs/jss" target="_blank" rel="external">JSS</a> (아니면 이와 비슷한 라이브러리)를 사용하세요. HTML/JS 코드에 CSS를 묶어두면 변경 하기가 편할 뿐더러, 다른 부분에도 부작용을 일으키지 않고 컴포넌트를 옮기거나 제거할 수 있습니다. 아, 그리고 <a href="https://acss.io/" target="_blank" rel="external">ACSS</a>와 같은 Atomic CSS 방법론도 한번 참고해 보세요. 앞에서 소개한 라이브러리와 비교해 보았을 때, 해결하려는 문제는 동일하지만 다른 접근 방법을 취하고 있습니다.</p>
+<hr>
+<p>지금까지 소개한 케이스 3가지가 가장 흔하게 마주할 수 있는 상황이지만, 얼마든지 다른 요구사항을 만족시켜야 하는 상황도 발생할 수 있습니다.</p>
+<blockquote>
+<p>본격적인 시작에 앞서 프로토타입을 먼저 만들어 보고 싶어요.</p>
+</blockquote>
+<p>👉 <a href="http://tachyons.io/" target="_blank" rel="external">TACHYONS</a>, <a href="http://basscss.com/" target="_blank" rel="external">BASSCSS</a> 같이 “단일 목적(single purpose) 클래스”를 생성할 수 있는 라이브러리를 사용해 보세요. HTML과 CSS 코드를 동시에 작성해야 하는 수고를 덜어줍니다. 파일을 이것저것 열어둘 필요도 없고, 클래스 이름을 짓느라 고민할 필요도 없이 마음 속에 있는 것을 그대로 구현할 수 있게 해줍니다.</p>
+<blockquote>
+<p>우리가 진행하는 프로젝트는 대응해야 하는 상황이 너무 많고, 서비스 사용 도중에 수시로 바뀌어야 할 사항도 많아요.</p>
+</blockquote>
+<p>👉 <a href="https://github.com/MicheleBertoli/css-in-js" target="_blank" rel="external">CSS-in-JS</a> 라이브러리를 사용해보세요. 특정 프로퍼티를 수정해야 할 때, 클래스나 DOM 노드를 찾을 필요 없이 JS를 통해 바로 수정할 수 있습니다.</p>
+<blockquote>
+<p>CSS 프레임워크를 만들어서 배포해보고 싶어요.</p>
+</blockquote>
+<p>👉 네임스페이스를 붙인 <a href="https://en.bem.info/methodology/quick-start/" target="_blank" rel="external">BEM</a>을 사용해보세요. 사용하는 데 제약사항이 조금 있긴 하지만, 사용자의 입맛 대로 어느 정도 변경이 가능합니다. 또한 변수를 사용해 프레임워크의 테마를 쉽게 바꿀 수 있게 만들면 사용자들이 좋아할 것 같네요.</p>
+<blockquote>
+<p>(사용자가 임의대로 변경할 수 없는) 서드 파티 위젯을 만들어 보고 싶어요.</p>
+</blockquote>
+<p>👉 <a href="https://glenmaddern.com/articles/css-modules" target="_blank" rel="external">CSS Module</a>을 사용해보세요. 클래스 이름이 중복되지 않기 때문에 스타일이 원치 않는 곳으로 새나가는 것을 방지할 수 있습니다. Iframe이나 Web Component 사용 역시 고려해보세요.</p>
+<blockquote>
+<p><a href="https://codepen.io/" target="_blank" rel="external">CodePen</a>에서 데모를 만들어 보고 싶어요.</p>
+</blockquote>
+<p>👉 뭔가 새로운 것을 시도해보세요. 바로 이때가 평소에 해보지 않은 것을 시도해 볼 절호의 기회입니다.</p>
+<blockquote>
+<p>저는 제 동료가 싫어요.</p>
+</blockquote>
+<p>👉 아래와 같이 선택자를 줄줄이 나열해서 작성해 보세요. 충분히 동료를 고통스럽게 만들수 있기 때문에 당신의 가학성을 충족할 수 있을 것입니다.</p>
+<p><code>header &gt; ul.nav li.button {}</code></p>
+<p>아, 잠시만요… 마지막 말은 취소하겠습니다. 선택자를 줄줄이 나열해서 쓰는 것은 마크업을 건드릴 수 없을 경우에만 사용하는 최후의 보루로 남겨주세요. CMS의 변경 감지 기능 때문에 도저히 손쓸 방법이 없는 경우 처럼요. 이런 경우에는 선택자 나열법이 가장 좋은 (그리고 유일한) 해결책이라고 생각합니다.</p>
+<hr>
+<p>보시는 바와 같이, 매우 다양한 상황이 존재하기 때문에 서로가 처한 환경에 대한 파악 없이는 CSS 방법론에 대해 논의하는 것이 어려울 수 있습니다.</p>
+<p><strong>마치며</strong>: 반드시 하나의 CSS 방법론만 고수할 필요가 없습니다. 이미 존재하는 방법론에서 마음에 드는 부분을 가져와서 여러분만의 방법론을 만들어 보세요. 내 프로젝트 상황에 딱 맞는 방법론을 만드는 것입니다. 하다가 아니다 싶으면 새로운 방법론으로 바꾸는 것도 가능하고, 때로는 반드시 다른 것으로 갈아타야 하는 경우도 있습니다. 프로젝트가 처음에는 간단한 프로토타입으로 시작했으나 나중에는 여러명의 팀원이 함께 참여하는 복잡한 프로젝트로 커가는 경우처럼 말입니다. 방법론을 바꿀 때 자칫하다가는 꽤 시간 낭비를 할 수 있고 불안정한 방향으로 흘러가기 쉽습니다. 나중에 골치 아파지는 상황을 방지하기 위해 사전 계획을 세우는 것이 좋겠지요. 행복한 선택의 시간이 되기를 바랍니다!</p>
+<hr>
+<blockquote>
+<p>알림 사항: 누구나 그렇듯이, 저 또한 한쪽으로 편향된 의견을 가지고 있습니다. 그리고 제가 하는 말이 무슨 말인지 명확히 파악하고 있을 정도로 모든 CSS 방법론을 충분히 사용해 보지는 않았습니다. 그렇지만 최대한 중립적인 자세를 가지고 이를 대하려고 합니다. 만약 여러분이 생각하시기에 이 글 전체가 완전히 잘못되었다고 생각하거나 뭔가 빠진게 있다고 느낀다면, <a href="https://github.com/simurai/simurai.github.io/edit/master/_posts/2016-11-27-css-methodologies.md" target="_blank" rel="external">이 링크를 클릭해서</a> 수정해 주세요.</p>
+</blockquote>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Young Bae</h4>
+    <p>A UI developer who loves to read anything that is written in English or Korean.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/12/07/when-to-use-which-CSS-methodology/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://gratiaa.github.io/young-blog/young-blog/2016/12/07/when-to-use-which-CSS-methodology/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/12/07/when-to-use-which-CSS-methodology/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/young-blog/2016/12/07/how-to-read-w3c-specs/">
+        W3C 스펙 문서 읽는 법 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+        <div id="disqus_thread"></div>
+        <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//young-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/young-blog/">Young Blog</a> &copy; 2016 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/young-blog/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/young-blog/js/index.js"></script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'young-blog';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>

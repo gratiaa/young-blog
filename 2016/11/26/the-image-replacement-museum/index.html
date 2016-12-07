@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Sass Map의 Key 값으로 숫자를 넣을 때 주의할 점 | Young Blog</title>
+  <title>이미지 대체 기법 박물관 | Young Blog</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -45,24 +45,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7a7c', end
 <main class="content" role="main">
   <article class="post">
     <span class="post-meta">
-      <time datetime="2016-11-20T12:29:08.000Z" itemprop="datePublished">
-          2016-11-20
+      <time datetime="2016-11-26T07:30:44.000Z" itemprop="datePublished">
+          2016-11-26
       </time>
     
     
     | 
-    <a href='/young-blog/tags/sass/'>sass</a>
+    <a href='/young-blog/tags/CSS/'>CSS</a>
     
     
 </span>
-    <h1 class="post-title">Sass Map의 Key 값으로 숫자를 넣을 때 주의할 점</h1>
+    <h1 class="post-title">이미지 대체 기법 박물관</h1>
     <section class="post-content">
-      <p>작업하던 도중에 스프라이트 이미지 부분이 계속 에러가 나서 소스를 살펴봤더니 Sass Map의 Key 부분이 대략 다음과 같이 적혀있었다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$sass-map-example: (</div><div class="line">	1: some-value,</div><div class="line">	2: some-value,</div><div class="line">	3: some-value,</div><div class="line">	5: some-value,</div><div class="line">	10: some-value,</div><div class="line">	12: some-value,</div><div class="line">	13: some-value</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>위와 같이 key 값에 숫자가 들어갈 경우, 1~9 사이의 숫자 앞에 0을 붙여주지 않으면 컴파일 시 순서가 순차적으로 먹지 않고 뒤죽박죽 되어버린다. </p>
-<p>예전에 파일명인가 폴더명을 변경했을 때 비슷하게 순서가 뒤바뀐 경험이 있어서 1~9 사이의 숫자 앞에 0을 붙여서 다시 컴파일 해봤다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$sass-map-example: (</div><div class="line">	01: some-value,</div><div class="line">	02: some-value,</div><div class="line">	03: some-value,</div><div class="line">	05: some-value,</div><div class="line">	10: some-value,</div><div class="line">	12: some-value,</div><div class="line">	13: some-value</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>결과는 깔끔하게 잘된다! 루비 버전 2.0.0에서는 처음 코드처럼 0을 붙이지 않아도 순서대로 잘 나왔으나, 2.3으로 업그레이드 하니까 0을 꼭 붙여줘야 순서대로 나온다. 다른 버전에서는 아직 테스트를 해보지 않았다.</p>
+      <p><a href="https://css-tricks.com/the-image-replacement-museum/" target="_blank" rel="external">원문 바로가기: The Image Replacement Museum by <em>Marie Mosley</em>, Nov 3, 2015</a></p>
+<p>CSS 이미지 대체 기법은 텍스트 요소(대부분의 경우 <code>&lt;h1&gt;</code>과 같은 머리말 태그)를 로고와 같은 이미지로 대체하는 방법입니다. </p>
 
     </section>
     <footer class="post-footer">
@@ -72,15 +68,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7a7c', end
 </section>
       <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/11/20/sass-map-using-number-as-key/"
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/11/26/the-image-replacement-museum/"
        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://gratiaa.github.io/young-blog/young-blog/2016/11/20/sass-map-using-number-as-key/"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://gratiaa.github.io/young-blog/young-blog/2016/11/26/the-image-replacement-museum/"
        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/11/20/sass-map-using-number-as-key/"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2016/11/26/the-image-replacement-museum/"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
@@ -89,14 +85,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7a7c', end
   </article>
   <nav class="pagination" role="pagination">
     
-    <a class="newer-posts" href="/young-blog/2016/11/26/the-image-replacement-museum/">
-        ← 이미지 대체 기법 박물관
+    <a class="newer-posts" href="/young-blog/2016/12/07/how-to-read-w3c-specs/">
+        ← W3C 스펙 문서 읽는 법
     </a>
     
     <span class="page-number">•</span>
     
-    <a class="older-posts" href="/young-blog/2016/11/13/an-introduction-to-postCSS/">
-        PostCSS 안내서 →
+    <a class="older-posts" href="/young-blog/2016/11/20/sass-map-using-number-as-key/">
+        Sass Map의 Key 값으로 숫자를 넣을 때 주의할 점 →
     </a>
     
 </nav>
