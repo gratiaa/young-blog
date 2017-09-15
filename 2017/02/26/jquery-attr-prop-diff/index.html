@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>prop() vs. attr() | Young Blog</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="naver-site-verification" content="6299d4d1f089f29707f213be3e1760a08441044d"/>
+
+  <link rel="stylesheet" type="text/css" href="/young-blog/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
+
+  <meta name="generator" content="Young Blog">
+
+  
+  
+  
+
+  
+</head>
+
+
+<body class="post-template">
+
+  <header class="site-head"  style="/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff7a7c+0,ffd53f+100 */
+background: #ff7a7c; /* Old browsers */
+background: -moz-linear-gradient(45deg,  #ff7a7c 0%, #ffd53f 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg,  #ff7a7c 0%,#ffd53f 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg,  #ff7a7c 0%,#ffd53f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7a7c', endColorstr='#ffd53f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/young-blog/"><img src="//blog.ghost.org/content/images/2013/Nov/bloglogo_1-1.png" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Young Blog</h1>
+            <h2 class="blog-description"></h2>
+        </div>
+    </div>
+</header>
+  
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2017-02-25T15:30:39.000Z" itemprop="datePublished">
+          2017-02-26
+      </time>
+    
+    
+    | 
+    <a href='/young-blog/tags/jQuery/'>jQuery</a>
+    
+    
+</span>
+    <h1 class="post-title">prop() vs. attr()</h1>
+    <section class="post-content">
+      <p>뷰포트 너비가 좁아질 때, 상단 가로 네비게이션 메뉴를 셀렉트 폼 형태로 만들어보고자 jQuery를 사용했다. <code>ul li</code>에서 선택한 메뉴는 <code>select option</code>에서도 선택되도록 했다. <code>attr()</code> 혹은 <code>prop()</code> 둘 중에 아무거나 써도 되기는 된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;menu&quot;&gt;</div><div class="line">	&lt;ul&gt;</div><div class="line">		&lt;li class=&quot;selected&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;</div><div class="line">		&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;</div><div class="line">		&lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;</div><div class="line">		&lt;li&gt;&lt;a href=&quot;support.html&quot;&gt;Support&lt;/a&gt;&lt;/li&gt;</div><div class="line">		&lt;li&gt;&lt;a href=&quot;faqs.html&quot;&gt;FAQs&lt;/a&gt;&lt;/li&gt;</div><div class="line">		&lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;</div><div class="line">	&lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var select = $(&quot;&lt;select&gt;&lt;/select&gt;&quot;);</div><div class="line">$(&quot;#menu&quot;).append(select);</div><div class="line">$(&quot;#menu a&quot;).each(function() &#123;</div><div class="line">  var anchor = $(this);</div><div class="line">  var anchorParent = $(this).parent();</div><div class="line">  var option = $(&quot;&lt;option&gt;&lt;/option&quot;);</div><div class="line">  </div><div class="line">  option.val(anchor.attr(&quot;href&quot;));</div><div class="line">  option.text(anchor.text());</div><div class="line">  </div><div class="line">  if(anchorParent.hasClass(&quot;selected&quot;)) &#123;</div><div class="line">    option.attr(&quot;selected&quot;, true);</div><div class="line">  &#125;</div><div class="line">  select.append(option);</div><div class="line">&#125;);</div><div class="line">var button = $(&quot;&lt;button&gt;Go&lt;/button&gt;&quot;);</div><div class="line">$(&quot;#menu&quot;).append(button);</div><div class="line">button.click(function() &#123;</div><div class="line">  window.location = $(&quot;select&quot;).val();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var select = $(&quot;&lt;select&gt;&lt;/select&gt;&quot;);</div><div class="line">$(&quot;#menu&quot;).append(select);</div><div class="line">$(&quot;#menu a&quot;).each(function() &#123;</div><div class="line">  var anchor = $(this);</div><div class="line">  var anchorParent = $(this).parent();</div><div class="line">  var option = $(&quot;&lt;option&gt;&lt;/option&quot;);</div><div class="line">  option.val(anchor.attr(&quot;href&quot;));</div><div class="line">  option.text(anchor.text());</div><div class="line">  if(anchorParent.hasClass(&quot;selected&quot;)) &#123;</div><div class="line">    option.prop(&quot;selected&quot;, true);</div><div class="line">  &#125;</div><div class="line">  select.append(option);</div><div class="line">&#125;);</div><div class="line">var button = $(&quot;&lt;button&gt;Go&lt;/button&gt;&quot;);</div><div class="line">$(&quot;#menu&quot;).append(button);</div><div class="line">button.click(function() &#123;</div><div class="line">  window.location = $(&quot;select&quot;).val();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>둘 다 똑같이 화면은 다음과 같다.</p>
+<p><img src="jquery_attr_prop2.png" alt=""></p>
+<p>그러나 실행 후 개발자 도구에서 까보면 <code>attr()</code>을 사용한 경우에는 <code>selected</code>가 <code>option</code> 요소의 attribute로 들어가는 반면에,</p>
+<p><img src="jquery_attr_prop3.png" alt=""></p>
+<p><code>prop()</code>을 사용한 경우에는 <code>option</code> DOM property 중 <code>selected</code>의 상태만 true로 바뀌고(<code>attr()</code>을 사용한 경우에도 당연히 바뀜), 요소의 attribute는 바뀌지 않는다.</p>
+<p><img src="jquery_attr_prop2.png" alt=""></p>
+<p><img src="jquery_attr_prop4.png" alt=""></p>
+<p>동작은 되지만 뭔가 찜찜한 상황이니 두 메소드의 사용법 차이에 관해, 그리고 attribute와 property가 본질적으로 어떻게 다른 건지 궁금해서 jQuery 공식 문서를 살펴보았다.</p>
+<h2 id="jQuery-Docs-설명"><a href="#jQuery-Docs-설명" class="headerlink" title="jQuery Docs 설명"></a>jQuery Docs 설명</h2><p><code>attr()</code>과 <code>prop()</code>의 차이점에 대해서는 <a href="http://api.jquery.com/attr/" target="_blank" rel="external">jQuery 공식 문서</a>에 설명이 아주 친절하게 잘 나와있다.</p>
+<p>우선 각각의 메소드 정의부터 살펴보고 넘어가보고자 한다.</p>
+<h3 id="attr"><a href="#attr" class="headerlink" title="attr()"></a><code>attr()</code></h3><blockquote>
+<p>Get the value of an <strong>attribute</strong> for the first element in the set of matched elements or set one or more attributes for every matched element.</p>
+</blockquote>
+<h3 id="prop"><a href="#prop" class="headerlink" title="prop()"></a><code>prop()</code></h3><blockquote>
+<p>Get the value of a <strong>property</strong> for the first element in the set of matched elements or set one or more properties for every matched element.</p>
+</blockquote>
+<p>어찌된 영문인지는 모르겠으나 <code>attribute</code>, <code>property</code> 이 두 단어 빼고는 설명을 고스란히 복붙해 놓았다. 복붙을 한 이유는 저 문장이 설명용으로 아주 최적화가 되었기 때문이 아닐까 하고 조심스레 생각해본다. 두 메소드 모두 요소의 attribute 혹은 property 중 매칭 되는 것을 반환하는 역할을 한다.</p>
+<h2 id="Attributes-vs-Properties"><a href="#Attributes-vs-Properties" class="headerlink" title="Attributes vs. Properties"></a>Attributes vs. Properties</h2><p>두 문서 모두 하단에 <em>Attributes vs. Properties</em> 섹션을 마련하여 차이점을 설명하는 부분을 실어 놓았다. <strong>jQuery 1.6</strong> 버전 이전에는 몇몇 property들(예를 들어 <code>selectedIndex</code>, <code>tagName</code>, <code>nodeName</code>, <code>nodeType</code>, <code>ownerDocument</code>, <code>defaultChecked</code>, <code>defaultSelected</code>)의 값을 <code>attr()</code> 메서드로 얻어 오는 것이 가능했다고 한다. </p>
+<p>이 property들은 attribute의 범위에 속하는 것들이 아닌데 <code>attr()</code>로 추출해 내는 것이 가능했으니 문제였다. 값을 얻어 오는 것 까지는 괜찮았으나, 이로 인해 말썽이 종종 일어났다고 한다. 물론 경험해 보지는 않았으니 어떤 결과를 불러일으켰는지는 모르겠다. (아마 <code>attr()</code>로 얻어 낸 값과 변경된 값의 싱크가 맞지 않아서 동작이 제대로 안되지 않았을까 추측해본다.)</p>
+<p>때문에 <code>attr()</code> 메소드로 가져와서는 안되는 property 값을 가져와서 원치 않는 상황이 발생하는 것을 방지하기 위해, <strong>jQuery 1.6</strong> 부터는 <code>prop()</code> 메소드를 사용해야지만 이 값들을 얻어 올 수 있도록 바뀌었다고 한다.</p>
+<p><code>true</code> 혹은 <code>false</code>로 그 값이 표현되는 불리언 attribute의 예를 들어보자. 다음과 같은 HTML 마크업으로 DOM 요소가 정의되었다. 그리고 이 요소가 자바스크립트 코드 내에서는 <code>elem</code>이라는 이름의 변수로 정의되었다고 하자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>jQuery 문서에서는 이 다음에 attribute/property 메소드에 대한 테이블이 나오지만, 더 재미있는 내용은 그 밑의 텍스트다. <a href="https://www.w3.org/TR/html401/interact/forms.html#h-17.4" target="_blank" rel="external">W3C 폼 명세서</a>에 따르면, <code>checked</code> attribute는 <a href="https://www.w3.org/TR/html4/intro/sgmltut.html#h-3.3.4.2" target="_blank" rel="external">불리언 값을 가진다.</a> 명세서에도 나와 있듯이, 대부분의 브라우저는 불리언 attribute의 형식을 최소화(minimize)한 형태로 나타낸다. </p>
+<blockquote>
+<p>In HTML, boolean attributes may appear in <strong>minimized form – the attribute’s value appears alone in the element’s start tag.</strong> Thus, selected may be set by writing: <code>&lt;OPTION selected&gt;</code> instead of: <code>&lt;OPTION selected=&quot;selected&quot;&gt;</code>. Authors should be aware that many user agents only recognize the minimized form of boolean attributes and not the full form.</p>
+</blockquote>
+<p>불리언 값을 가지는 attribute는 코드 작성자가 안에 무슨 값을 넣든 (심지어 <code>false</code>를 넣더라도) <code>true</code>로 설정한다는 뜻이다. <code>checked</code> attribute의 값은 <code>checked</code> property의 값과 일치하지 않는다. 단지 체크박스의 <em>초기값</em> 설정에 사용될 뿐이다. 이와 같은 역할을 하는 property는 <code>checked</code>가 아니라, <code>defaultChecked</code>이다. </p>
+<p><code>checked</code> property는 체크박스의 상태 변경에 관여하지만, <code>checked</code> attribute는 상태 변화에 관여하지 않는다. 그렇기 때문에 체크박스가 사용자에 의해 체크 되었는지, 안 되었는지 판단하기 위해서는 <code>checked</code> property의 값을 봐야 한다. 다음과 같은 세 가지 메소드로 그 값을 얻어낼 수 있다.</p>
+<ul>
+<li><code>if ( elem.checked )</code></li>
+<li><code>if ( $( elem ).prop( &quot;checked&quot; ) )</code></li>
+<li><code>if ( $( elem ).is( &quot;:checked&quot; ) )</code></li>
+</ul>
+<p>위 내용은 <code>checked</code> 뿐만 아니라 <code>selected</code>, <code>value</code>등 계속 변화하는 모든 동적인 attribute에 해당되는 내용이다.</p>
+<p>아래 테이블은 지금까지 다룬 내용을 정리한 것이다.</p>
+<table>
+<thead>
+<tr>
+<th><code>elem.checked</code></th>
+<th><code>true</code> (Boolean) Will change with checkbox state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$( elem ).prop( &quot;checked&quot; )</code></td>
+<td><code>true</code> (Boolean) Will change with checkbox state</td>
+</tr>
+<tr>
+<td><code>elem.getAttribute( &quot;checked&quot; )</code></td>
+<td><code>&quot;checked&quot;</code> (String) Initial state of the checkbox; does not change</td>
+</tr>
+<tr>
+<td><code>$( elem ).attr( &quot;checked&quot; )</code> (1.6)</td>
+<td><code>&quot;checked&quot;</code> (String) Initial state of the checkbox; does not change</td>
+</tr>
+<tr>
+<td><code>$( elem ).attr( &quot;checked&quot; )</code> (1.6.1+)</td>
+<td><code>&quot;checked&quot;</code> (String) Will change with checkbox state</td>
+</tr>
+<tr>
+<td><code>$( elem ).attr( &quot;checked&quot; )</code> (pre-1.6)</td>
+<td><code>true</code> (Boolean) Changed with checkbox state</td>
+</tr>
+</tbody>
+</table>
+<p>테이블의 5번째 행을 보면 1.6.1 버전 이상에서 <code>attr()</code>을 사용할 시 이 값은 체크박스 상태에 따라 변한다고 되어 있다. 직접 codepen에서 <code>selected</code> attribute를 사용하여 확인해 본 결과(<a href="http://codepen.io/serisepomme/pen/ZeYvZV" target="_blank" rel="external">codepen link</a>), 테이블의 내용과는 다르게 jQuery 3.3.1 버전에서 <code>attr()</code> 메소드를 사용하였는데도 셀렉트 박스의 상태에 따라 값이 변경되지 않았다. 테이블 내용이 업데이트 되지 않은건지, 아니면 셀렉트 박스인 경우와 셀렉트 박스인 경우 그 동작이 각각 다른 건지 확인해 볼 필요가 있다.</p>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p><code>attr()</code> 메소드는 셀렉트 박스의 기본 옵션값을 지정해 주는 역할을 하므로 초기화와 관련된 부분에서는 <code>attr()</code> 메소드를 사용하는 것이 적절하고, 한번 초기화 후에 그 값이 변경되는 경우에는 <code>prop()</code>을 사용하는 것이 적절한 선택이라 생각한다. (jQuery의 친절한 공식 문서의 의도와 부합하기도 하고)</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>Young Bae</h4>
+    <p>A UI developer who loves to read anything that is written in English or Korean.</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2017/02/26/jquery-attr-prop-diff/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://gratiaa.github.io/young-blog/young-blog/2017/02/26/jquery-attr-prop-diff/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://gratiaa.github.io/young-blog/young-blog/2017/02/26/jquery-attr-prop-diff/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/young-blog/2016/12/07/when-to-use-which-CSS-methodology/">
+        상황에 따라 다르게 적용하는 CSS 방법론 →
+    </a>
+    
+</nav>
+  <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+        <div id="disqus_thread"></div>
+        <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//young-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+</div>
+</main>
+
+
+  
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/young-blog/">Young Blog</a> &copy; 2016 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/young-blog/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/young-blog/js/index.js"></script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'young-blog';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+</body>
+</html>
